@@ -1,0 +1,26 @@
+$basic-form-width: 500px;
+
+.basic-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  
+  max-width: $basic-form-width;
+  margin: 30px auto;
+
+  .title-form {
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  .status-message {
+    padding: 8px 16px;
+    border-radius: 3px;
+    margin: 8px 0;
+
+    &.error {
+      background: rgba(#FF1010, 0.8);
+      color: white;
+    }
+  }
+}

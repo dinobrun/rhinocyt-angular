@@ -1,0 +1,15 @@
+$toolbar-height: 50px;
+$sidenav-width: 300px;
+
+
+/// colors
+$color-light: #fafafa;
+$color-dark: #050505;
+
+$value-light-alpha: 0.12;
+$value-lighter-alpha: 0.06;
+
+$color-light-withe-transparent: rgba(#ffffff, $value-light-alpha);
+$color-lighter-withe-transparent: rgba(#ffffff, $value-lighter-alpha);
+$color-light-dark-transparent: rgba(#000000, $value-light-alpha);
+$color-lighter-dark-transparent: rgba(#000000, $value-lighter-alpha);

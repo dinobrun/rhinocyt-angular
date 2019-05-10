@@ -1,0 +1,8 @@
+<app-loader [showLoader]="!isDisconnected"></app-loader>
+
+<app-content sidenav="true">
+  <ng-container *ngIf="isDisconnected">
+    <h2>You have been disconnected</h2>
+    <p>You have been disconnected. Now you can <a routerLink="/login">login</a> or <a routerLink="/signup">signup</a>.
+  </ng-container>
+</app-content>

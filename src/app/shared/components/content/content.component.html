@@ -1,0 +1,44 @@
+<app-not-found *ngIf="error; else content"></app-not-found>
+
+<ng-template #content>
+  <app-toolbar></app-toolbar>
+
+  <mat-sidenav-container hasBackdrop="false" fullscreen>
+    <!-- sidenav -->
+    <mat-sidenav #sidenav mode="side" role="navigation" [opened]="showSidenav">
+      <div class="sidenav-content">
+        <!-- items of the sidebar -->
+        <mat-list>
+          <mat-list-item><a mat-button routerLink="/"><mat-icon>dashboard</mat-icon> Dashboard</a></mat-list-item>
+          <mat-list-item class="separator"></mat-list-item>
+
+          <mat-list-item *ngFor="let item of sidenavItems" [ngSwitch]="item.type" [ngClass]="{'separator': item.type == 'separator'}">
+            <ng-template #textItem>
+              <mat-icon *ngIf="item.options.icon">{{ item.options.icon }}</mat-icon>
+              {{ item.text }}
+            </ng-template>
+            <span *ngSwitchCase="'text'">
+              <ng-container *ngTemplateOutlet="textItem"></ng-container>
+            </span>
+            <a mat-button *ngSwitchCase="'internal_link'" [routerLink]="item.url" [target]="item.options.newTab ? '_blank' : undefined" [disabled]="item.options.disabled">
+              <ng-container *ngTemplateOutlet="textItem"></ng-container>
+            </a>
+            <a mat-button *ngSwitchCase="'external_link'" [href]="item.url" [target]="item.options.newTab ? '_blank' : undefined" [disabled]="item.options.disabled">
+              <ng-container *ngTemplateOutlet="textItem"></ng-container>
+            </a>
+          </mat-list-item>
+
+          <mat-list-item class="separator" *ngIf="sidenavItems && sidenavItems.length > 0"></mat-list-item>
+          <mat-list-item><a mat-button routerLink="/about"><mat-icon>info</mat-icon> About</a></mat-list-item>
+        </mat-list>
+      </div>
+    </mat-sidenav>
+
+    <!-- sidenav content -->
+    <mat-sidenav-content>
+      <div id="container" [ngClass]="{'no-padding': contentPadding == 'none'}">
+        <ng-content></ng-content>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-template>

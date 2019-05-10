@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+  <a routerLink="/" class="logo">cynochew</a>
+  <span class="fill-space"></span>
+  
+  <!-- if logged show doctor -->
+  <ng-container *ngIf="authService.isLogged && doctor.username">
+    <button mat-button [matMenuTriggerFor]="menu">{{ doctor.username }} <mat-icon>arrow_drop_down</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/logout"><mat-icon>exit_to_app</mat-icon> Logout</a>
+    </mat-menu>
+  </ng-container>
+
+  <!-- if not logged show login/signup buttons -->
+  <ng-container *ngIf="!authService.isLogged()">
+    <a routerLink="/login" mat-button *ngIf="!authService.isLogged()">Login</a>
+    <a routerLink="/signup" mat-button *ngIf="!authService.isLogged()">Signup</a>
+  </ng-container>
+</mat-toolbar>

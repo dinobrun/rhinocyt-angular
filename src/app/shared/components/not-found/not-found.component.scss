@@ -1,0 +1,31 @@
+.gif-background{
+	background: url(/assets/images/notfound.gif) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+ 	-o-background-size: cover;
+ 	background-size: cover;
+ 	width: 100%;
+ 	height: 100%;
+}
+
+.not-found-title, .not-found-subtitle {
+	margin: 0;
+	color: white;
+	text-align: center;
+	padding: 35px 20px;
+	text-shadow: 1px 1px 1px black;
+}
+
+.not-found-title {
+	font-size: 50px;
+	font-weight: 600;
+}
+
+.not-found-subtitle {
+	font-size: 30px;
+	font-style: italic;
+}
+
+.link-to-home {
+	color:white;
+}

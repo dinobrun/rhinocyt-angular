@@ -1,0 +1,22 @@
+<app-content>
+  <form (ngSubmit)="signup()" #loginForm="ngForm" class="basic-form">
+    <h2 class="title-form">Create a new account</h2>
+    <mat-form-field>
+      <input matInput type="text" placeholder="First Name" required [(ngModel)]="doctor.first_name" name="first-name" #firstName="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Last Name" required [(ngModel)]="doctor.last_name" name="last-name" #lastName="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Username" required [(ngModel)]="doctor.username" name="username" #username="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" required [(ngModel)]="doctor.email" name="email" #email="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" required [(ngModel)]="doctor.password" name="password" #password="ngModel">
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!loginForm.form.valid">Signup</button>
+    <p>Do you already have an account? Then you should <a routerLink="/login">login</a>.</p>
+  </form>
+</app-content>

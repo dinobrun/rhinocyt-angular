@@ -1,0 +1,23 @@
+@import '../shared/styles/vars';
+@import '../shared/styles/lists';
+
+.list {
+  height: 100%;
+}
+
+.patient-list {
+  flex: 2;
+  margin-right: 16px;
+
+  .list-title {
+    border-bottom: 0 !important;
+  }
+
+  .filter-patients {
+    height: auto;
+  }
+}
+
+.cell-extraction-list {
+  flex: 5;
+}

@@ -1,0 +1,58 @@
+<app-content [sidenav]="false" [error]="error">
+<div class="container">
+	<div id="classification">
+		<h3>Classification of {{ cellExtraction?.extraction_date | date:'medium'  }}</h3>
+		<mat-tab-group>
+		  <mat-tab *ngFor="let cellCategory of cellCategories" label="{{cellCategory.name}}">
+				<div id="wrapper-cell-images">
+					<div *ngFor="let cell of cellByCat[cellCategory.id]" class="cell-container">
+						<img src="{{ cell.image }}" class="{{cellCategory.name}} cell-images" />
+						<mat-menu #appMenu="matMenu">
+							<button mat-menu-item (click)="deleteCellFromView(cell)">
+						  	<mat-icon matListIcon>remove</mat-icon> 
+						  	<span >Delete</span>
+							</button>
+							<hr />
+						  <button mat-menu-item *ngFor="let cellCategory of cellCategories" (click)="changeLabel(cellCategory, cell)"
+						  				[ngClass]="{'active': cellCategory.id == cell.cell_category}">
+						  	<!--<mat-icon matListIcon [ngClass]="'icon-' + cellCategory.name">label</mat-icon>-->
+						  	<span >{{ cellCategory.name }}</span>
+							</button>
+						</mat-menu>
+
+						<button mat-icon-button class="icon-action-cell" [matMenuTriggerFor]="appMenu">
+						  <mat-icon>more_vert</mat-icon>
+						</button>
+					</div>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+
+		<div id="classification-actions">
+			<form (ngSubmit)="onSave()" #reviewForm="ngForm">
+				<div>
+					<mat-checkbox [(ngModel)]="validated" type="checkbox" name="validate" value="validate" >All cells are in the proper category</mat-checkbox>
+				</div>
+				<div>
+					<button mat-raised-button>Save</button> 
+				</div>
+			</form>
+		</div>
+	</div>
+	<app-loader [showLoader]='loadingService.loading'></app-loader>
+</div>
+</app-content>
+
+<!--
+<div class="container">
+	<div id="legend">
+		<h3>Legend</h3>
+		<mat-list>
+		  <mat-list-item *ngFor="let cellCategory of cellCategories">
+		    <mat-icon matListIcon [ngClass]="'icon-' + cellCategory.name">label</mat-icon>
+		    <h3 matLine> {{ cellCategory.name }} </h3>
+		  </mat-list-item>
+		</mat-list>
+	</div>
+</div>
+-->

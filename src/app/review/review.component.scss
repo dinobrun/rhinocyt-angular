@@ -1,0 +1,104 @@
+
+
+/* Variables 
+$color-epithelium: #bb3097;
+$color-neutrophil: #3930bb;
+$color-eosinophil: #3095bb;
+$color-mastocyte: #30bb61;
+$color-lymphocyte: #bba330;
+$color-mucipara: #bb3030;
+$color-other: #000000;
+*/
+.container, #wrapper-cell-images {
+	display: flex;
+}
+#wrapper-cell-images {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+#legend, #classification-actions {
+	padding: 20px;
+}
+.cell-container {
+	position: relative;
+	display: table;
+}
+
+.icon-action-cell {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: white;
+	cursor: pointer;
+}
+
+/* Color icon of cells
+.icon-epithelium {
+	color: $color-epithelium !important;
+}
+.icon-neutrophil {
+	color: $color-neutrophil !important;
+}
+
+.icon-eosinophil {
+	color: $color-eosinophil !important;
+}
+
+.icon-mastocyte {
+	color: $color-mastocyte !important;
+}
+
+.icon-lymphocyte {
+	color: $color-lymphocyte !important;
+}
+
+.icon-mucipara {
+	color: $color-mucipara !important;
+}
+
+.icon-other {
+	color: $color-other !important;
+}
+ */
+/* Border style of cells 
+.epithelium {
+	border-color: $color-epithelium;
+}
+.neutrophil {
+	border-color: $color-neutrophil;
+}
+
+.eosinophil {
+	border-color: $color-eosinophil;
+}
+
+.mastocyte {
+	border-color: $color-mastocyte;
+}
+
+.lymphocyte {
+	border-color: $color-lymphocyte;
+}
+
+.mucipara {
+	border-color: $color-mucipara;
+}
+
+.other {
+	border-color: $color-other;
+}
+*/ 
+.cell-container{
+	width: 100px;
+	height: auto;
+	margin: 5px;
+}
+.cell-images {
+	display: table-row;
+	border-radius: 3px;
+	width: 100%;
+	height: auto;
+}
+.active {
+	background: #ccc;
+}

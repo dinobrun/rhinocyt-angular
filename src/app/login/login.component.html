@@ -1,0 +1,17 @@
+<app-content>
+  <form (ngSubmit)="login()" #loginForm="ngForm" class="basic-form">
+    <h2 class="title-form">Login into your account</h2>
+    <div class="status-message error" *ngIf="loginError">
+      The username and/or the password is invalid.
+    </div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Username" required [(ngModel)]="doctor.username" name="username" #name="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" required [(ngModel)]="doctor.password" name="password" #password="ngModel">
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+    <p>No account? Then you should <a routerLink="/signup">signup</a>.</p>
+  </form>
+
+</app-content>

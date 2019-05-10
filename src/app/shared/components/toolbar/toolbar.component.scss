@@ -1,0 +1,36 @@
+@import '~@angular/material/theming';
+@import '../../styles/vars';
+
+
+.mat-toolbar {
+  position: relative;
+  
+  z-index: 1000;
+  height: $toolbar-height;
+  
+  padding-left: 0;
+
+  .logo {
+    display: block;
+
+    box-sizing: border-box;
+
+    width: $sidenav-width;
+    height: $toolbar-height;
+    line-height: $toolbar-height;
+
+    background-color: $color-lighter-dark-transparent;
+    color: $color-light;
+
+    border-right: 1px solid $color-light-dark-transparent;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition: backgorund-color 0.5s;
+
+    &:hover {
+      background-color: $color-light-dark-transparent;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<app-content [sidenav]="true" [sidenav-items]=sidenavItems [error]="error">
+	<div *ngIf="patient">
+		<form (ngSubmit)="onSubmit()" #addcellsForm="ngForm">
+			<h1>Add slides of {{ patient.first_name }} {{ patient.last_name }}</h1>
+			<div>
+				<label>Select a set of slide </label> 
+				<input #file [(ngModel)]="fileModel" type="file" id="addcell" name="addcell" accept="image/*" 
+	            multiple="true" required="true" (change)="onChange(file.files)"/>	
+			</div>
+	    <div>
+	      <li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
+	    </div>
+			<div>
+				<button mat-raised-button id="submitcells" type="submit" [disabled]="!addcellsForm.form.valid">Send</button>
+				<app-loader [showLoader]='loadingService.loading'></app-loader>
+			</div>
+		</form>
+	</div>
+</app-content>
+

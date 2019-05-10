@@ -1,0 +1,77 @@
+@import '../../styles/vars';
+
+/**
+ * Styling the sidenav.
+ */
+.mat-sidenav-container {
+  top: $toolbar-height !important;
+
+  .mat-sidenav {
+    width: $sidenav-width;
+    border-right: 1px solid $color-light-dark-transparent;
+
+    .sidenav-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .mat-list {
+      &.dashboard {
+        display: flex;
+
+        flex-direction: column;
+        flex: 1;
+
+        overflow: auto;
+
+        .patient-filter {
+          .mat-form-field {
+            flex: 1;
+          }
+        }
+        
+        .patient-item {
+          height: auto;
+
+          a {
+              flex: 1;
+              text-align: left;
+              overflow: hidden;
+              text-overflow: ellipsis;
+          }
+        }
+      }
+
+      .mat-list-item {
+        &.separator {
+          height: 1px;
+          background: #e0e0e0;
+        }
+
+        .mat-button {
+          flex: 1;
+          text-align: left;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          margin: 0 -16px;
+        }
+
+        a[disabled="true"] {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+  
+  /**
+   * Styling the content.
+   */
+  .mat-sidenav-content {
+    
+  }
+}

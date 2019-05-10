@@ -1,0 +1,21 @@
+<app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
+<div id="patient-card" *ngIf="patient" class="mat-elevation-z2">
+	<h2> {{ patient.first_name }} {{ patient.last_name }} </h2>
+		<mat-list>
+			<mat-list-item *ngIf="patient.fiscal_code"><strong>Fiscal code</strong>: {{ patient.fiscal_code }}</mat-list-item>
+			<mat-list-item *ngIf="patient.birthdate"><strong>Birthdate</strong>: {{ patient.birthdate }}</mat-list-item>
+			<mat-list-item *ngIf="patient.birth_city"><strong>Birth city</strong>: {{ patient.birth_city }}</mat-list-item>
+			<mat-list-item *ngIf="patient.residence_hcity"><strong>Residence city</strong>: {{ patient.residence_city }}</mat-list-item>
+		</mat-list>
+		<a routerLink="addcells" routerLinkActive="active" mat-raised-button id="execute_extraction" >Execute an extraction</a>
+</div>
+
+<div id="patient-extractions" *ngIf="extractions" class="mat-elevation-z2">
+	<b> Extractions </b>
+    <mat-list>
+	    <mat-list-item *ngFor="let extraction of extractions">
+	      <p><a routerLink="/dashboard/review/{{extraction.id}}">#{{extraction.id}}: Extraction of {{ extraction.extraction_date | date:'medium'}} executes on {{extraction.slides.length}} slides</a></p>
+	    </mat-list-item>
+	   </mat-list>
+</div>
+</app-content>

@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$cynochew-theme-primary: mat-palette($mat-orange);
+$cynochew-theme-accent: mat-palette($mat-indigo, A200, A100, A400);
+$cynochew-theme-warn: mat-palette($mat-red);
+
+$cynochew-theme: mat-light-theme($cynochew-theme-primary, $cynochew-theme-accent, $cynochew-theme-warn);
+
+@include angular-material-theme($cynochew-theme)

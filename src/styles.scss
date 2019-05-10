@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+#container {
+	padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+
+  &.no-padding {
+    padding: 0;
+  }
+}
+
+.fixed-container {
+  display: flex;
+  flex: 1;
+
+  height: 100%;
+  width: 1200px;
+
+  margin: 0 auto;
+}
+
+.fill-space {
+	display: flex;
+	flex: 1;
+}
