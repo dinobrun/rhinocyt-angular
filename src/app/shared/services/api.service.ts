@@ -15,6 +15,7 @@ import {
   CellCategory,
   Slide,
   City,
+  Anamnesis,
   ApiModel,
   ModelList
 } from '../interfaces/api-models';
@@ -52,6 +53,7 @@ export class ApiService {
   private cellCategory: CellCategoryApiHelper;
   private slide: SlideApiHelper;
   private city: CityApiHelper;
+  private anamnesis: AnamnesisApiHelper;
 
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -86,6 +88,7 @@ export class ApiService {
     this.cellCategory   = new CellCategoryApiHelper(this);
     this.slide          = new SlideApiHelper(this);
     this.city           = new CityApiHelper(this);
+    this.anamnesis      = new AnamnesisApiHelper(this);
   }
 
   /**
@@ -167,6 +170,13 @@ export class ApiService {
    */
   public City(): CityApiHelper {
     return this.city;
+  }
+
+  /**
+   * Returns the anamnesis's model API.
+   */
+  public Anamnesis(): AnamnesisApiHelper {
+    return this.anamnesis;
   }
 
 }
@@ -522,12 +532,16 @@ class CellExtractionApiHelper extends WritableApiHelper<CellExtraction> {
     const url = this.getApiUrl();
     let request: Observable<Object> = this.handlePostRequest<CellExtraction>(url, {patient: data.patient}, 'create');
 
+    //remove the first element from array of slides
+    const slide = slides.shift();
+
+    //pipe the first slide creation to the request picking the id from cellExtraction
     request = request.pipe(mergeMap((cellExtraction: CellExtraction, index) => {
-      const slide = slides.shift();
       slide.cell_extraction = cellExtraction.id;
       return this.apiService.Slide().create(slide);
     }));
 
+    //loop over all slides and pipe the creation request
     for (const slide of slides) {
       request = request.pipe(mergeMap((slideData: Slide, index) => {
         slide.cell_extraction = slideData.cell_extraction_id;
@@ -581,3 +595,12 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
     return 'cities/';
   }
 }
+
+/**
+ * The anamnesis API helper
+ */
+ class AnamnesisApiHelper extends WritableApiHelper<Anamnesis>{
+   public getApiPath(): string {
+     return 'anamnesis/';
+   }
+ }

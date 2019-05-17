@@ -28,6 +28,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { LogoutComponent } from './logout/logout.component';
     SignupComponent,
     AboutComponent,
     LogoutComponent,
+    AddAnamnesisComponent
   ],
   imports: [
     BrowserModule,

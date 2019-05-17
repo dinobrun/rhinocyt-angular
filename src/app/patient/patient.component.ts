@@ -20,7 +20,7 @@ export class PatientComponent implements OnInit {
 
   public sidenavItems: SidenavItem [] = [
     SidenavItem.internalLink("Add Cells", "addcells", {icon: 'add_box'}),
-    SidenavItem.internalLink("Anamnesis", "", {icon: 'description', disabled: true}),
+    SidenavItem.internalLink("Anamnesis", "add-anamnesis", {icon: 'description', disabled: false}),
     SidenavItem.internalLink("Diagnosis", "", {icon: 'assignment', disabled: true}),
     SidenavItem.separator(),
     SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),

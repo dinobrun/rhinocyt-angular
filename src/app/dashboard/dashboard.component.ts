@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.fetchDoctor();
-    this.fetchCellExtractions();
+  //this.fetchCellExtractions();
   }
 
   private fetchDoctor() {
