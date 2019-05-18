@@ -93,36 +93,37 @@ export interface City extends ApiModel {
  */
 export interface Anamnesis extends ApiModel {
   //anamnesi familiare
-  allergy_gen: string;
-  allergy_fra: string;
-  polip_nas_gen: boolean;
-  polip_nas_fra: boolean;
-  asma_bronch_gen: boolean;
-  asma_bronch_fra: boolean;
+  allergy_gen?: string;
+  allergy_fra?: string;
+  polip_nas_gen?: boolean;
+  polip_nas_fra?: boolean;
+  asma_bronch_gen?: boolean;
+  asma_bronch_fra?: boolean;
   //sintomatologia
-  ostr_nas: string;
-  rinorrea: string;
-  rinorrea_espans: string;
-  prur_nas: boolean;
-  starnutazione: string;
-  prob_olf: string;
-  ovatt_aur: string;
-  ipoacusia: string;
-  acufeni: string;
-  sindr_ver: string;
-  febbre: boolean;
-  uso_farmaci: boolean;
-  lacrimazione: boolean;
-  fotofobia: boolean;
-  prurito_cong: boolean;
-  bruciore_cong: boolean;
+  ostr_nas?: string;
+  rinorrea?: string;
+  rinorrea_espans?: string;
+  prur_nas?: boolean;
+  starnutazione?: string;
+  prob_olf?: string;
+  ovatt_aur?: string;
+  ipoacusia?: string;
+  acufeni?: string;
+  sindr_ver?: string;
+  febbre?: boolean;
+  uso_farmaci?: boolean;
+  lacrimazione?: boolean;
+  fotofobia?: boolean;
+  prurito_cong?: boolean;
+  bruciore_cong?: boolean;
   //esame medico
-  pir_nas: string;
-  valv_nas: string;
-  setto_nas: string;
-  turb: string;
-  polip_nas_sx: number;
-  polip_nas_dx: number;
-  essudato: string;
-  ipertr_adenoidea: number;
+  pir_nas?: string;
+  valv_nas?: string;
+  setto_nas?: string;
+  turb?: string;
+  polip_nas_sx?: number;
+  polip_nas_dx?: number;
+  essudato?: string;
+  ipertr_adenoidea?: number;
+  patient: Patient;
 }

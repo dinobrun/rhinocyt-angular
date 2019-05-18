@@ -29,7 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
-
+import { MatStepperModule, MatSelectModule, MatOptionModule, MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -59,10 +59,15 @@ import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
     MaterialModule,
     FilterPipeModule,
     InterceptorModule,
-    StorageServiceModule
+    StorageServiceModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatNativeDateModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
   bootstrap: [AppComponent]
 })

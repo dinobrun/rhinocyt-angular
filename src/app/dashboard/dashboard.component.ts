@@ -9,6 +9,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { ModelList, CellExtraction, Doctor, Patient } from '../shared/interfaces/api-models';
 import { SidenavItem } from '../shared/classes/sidenav-item';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -55,19 +56,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  private fetchCellExtractions() {
-    this.apiService.CellExtraction()
-        .all()
-        .subscribe((cellExtractions: ModelList<CellExtraction>) => {
-          this.cellExtractions = cellExtractions.results;
-          this.cellExtractions.map((extraction) => {
-            extraction.numCells = 0;
-            extraction.slides.map((slide) => {
-              extraction.numCells += slide.cells.length;
-            });
-          });
-        });
-  }
 
   public clearPatientFilter(input) {
     input.value = '';

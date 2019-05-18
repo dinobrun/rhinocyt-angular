@@ -1,3 +1,26 @@
 <app-content sidenav="true">
-  add-anamnesis works!
+<div id="patient-card" *ngIf="patient" class="mat-elevation-z2">
+  <mat-horizontal-stepper>
+    <mat-step label="Anamnesi familiare">
+      <mat-form-field>
+        <mat-label>Cars</mat-label>
+        <mat-select [(ngModel)]="allergy_gen" matNativeControl>
+          <mat-option *ngFor="let allergy of ALLERG_TYPE" [value]="allergy.key">
+            {{allergy.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p *ngIf="allergy_gen">You selected:{{allergy_gen}}</p>
+    </mat-step>
+    <mat-step label="Sintomatologia">
+      Content 2
+    </mat-step>
+    <mat-step label="Esame medico">
+      Content 3
+    </mat-step>
+    <mat-step label="Prick-Test">
+      Content 4
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>
 </app-content>
