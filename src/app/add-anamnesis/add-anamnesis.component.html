@@ -1,19 +1,192 @@
 <app-content sidenav="true">
-<div id="patient-card" *ngIf="patient" class="mat-elevation-z2">
+<div id="patient-card" *ngIf="patient" >
+  <form (ngSubmit)="onSubmit()" #newAnamnesisForm="ngForm">
   <mat-horizontal-stepper>
+    <!-- Anamnesi familiare -->
     <mat-step label="Anamnesi familiare">
+
+      <h4>Uno dei genitori presenta allegia?</h4>
       <mat-form-field>
-        <mat-label>Cars</mat-label>
-        <mat-select [(ngModel)]="allergy_gen" matNativeControl>
+        <mat-label>Allergia genitore</mat-label>
+        <mat-select [(ngModel)]="anamnesis.allergy_gen" name="allergy-gen" matNativeControl>
+          <mat-option>nessuno</mat-option>
           <mat-option *ngFor="let allergy of ALLERG_TYPE" [value]="allergy.key">
             {{allergy.value}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <p *ngIf="allergy_gen">You selected:{{allergy_gen}}</p>
+
+      <h4>Uno dei fratelli presenta allegia?</h4>
+      <mat-form-field>
+        <mat-label>Allergia fratelli</mat-label>
+        <mat-select [(ngModel)]="anamnesis.allergy_fra" name="allergy-fra" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let allergy of ALLERG_TYPE" [value]="allergy.key">
+            {{allergy.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.polip_nas_gen" labelPosition="before" name="polip-nas-gen" color="primary">
+      <h4>Uno dei genitori presenta poliposi nasale?</h4>
+      </mat-checkbox>
+      </div>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.polip_nas_fra" labelPosition="before" name="polip-nas-fra" color="primary">
+      <h4>Uno dei fratelli presenta poliposi nasale?</h4>
+      </mat-checkbox>
+      </div>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_gen" labelPosition="before" name="asma-bronch-gen" color="primary">
+      <h4>Uno dei genitori presenta asma bronchiale?</h4>
+      </mat-checkbox>
+      </div>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_fra" labelPosition="before" name="asma-bronch-fra" color="primary">
+      <h4>Uno dei fratelli presenta asma bronchiale?</h4>
+      </mat-checkbox>
+      </div>
     </mat-step>
+    <!-- Sintomatologia -->
     <mat-step label="Sintomatologia">
-      Content 2
+
+      <h4>Ostruzione nasale:</h4>
+      <mat-form-field>
+        <mat-label>ostruzione nasale</mat-label>
+        <mat-select [(ngModel)]="anamnesis.ostr_nas" name="ostr-nas" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of LEFT_RIGHT_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Rinorrea:</h4>
+      <mat-form-field>
+        <mat-label>rinorrea</mat-label>
+        <mat-select [(ngModel)]="anamnesis.rinorrea" name="rinorrea" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of RINORREA_ESSUDATO_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="anamnesis.rinorrea">
+        <h5>Seleziona lato rinorrea:</h5>
+        <mat-radio-group [(ngModel)]="anamnesis.rinorrea_espans" name="rinorrea-espans" aria-label="Seleziona lato">
+          <mat-radio-button value="SX" color="primary">Sinistra </mat-radio-button>
+          <mat-radio-button value="DX" color="primary">Destra </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.prur_nas" labelPosition="before" name="prur-nas" color="primary">
+      <h4>Prurito nasale</h4>
+      </mat-checkbox>
+      </div>
+
+      <h4>Starnutazione:</h4>
+      <mat-form-field>
+        <mat-label>starnutazione</mat-label>
+        <mat-select [(ngModel)]="anamnesis.starnutazione" name="starnutazione" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of STARNUTAZIONE_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Problemi olfattivi:</h4>
+      <mat-form-field>
+        <mat-label>problemi olfattivi</mat-label>
+        <mat-select [(ngModel)]="anamnesis.prob_olf" name="prob-olf" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of PROB_OLF_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Ovattamento auricolare:</h4>
+      <mat-form-field>
+        <mat-label>ovattamento</mat-label>
+        <mat-select [(ngModel)]="anamnesis.ovatt_aur" name="ovatt-aur" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of LEFT_RIGHT_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Ipoacusia:</h4>
+      <mat-form-field>
+        <mat-label>ipoacusia</mat-label>
+        <mat-select [(ngModel)]="anamnesis.ipoacusia" name="ipoacusia" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of LEFT_RIGHT_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Acufeni:</h4>
+      <mat-form-field>
+        <mat-label>acufeni</mat-label>
+        <mat-select [(ngModel)]="anamnesis.acufeni" name="acufeni" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of LEFT_RIGHT_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>Sindrome vertiginosa:</h4>
+      <mat-form-field>
+        <mat-label>sindrome vertiginosa</mat-label>
+        <mat-select [(ngModel)]="anamnesis.sindr_ver" name="sindr-ver" matNativeControl>
+          <mat-option>nessuno</mat-option>
+          <mat-option *ngFor="let select of SINDR_VER_TYPE" [value]="select.key">
+            {{select.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.febbre" labelPosition="before" name="febbre" color="primary">
+      <h4>Febbre</h4>
+      </mat-checkbox>
+      </div>
+
+      <div>
+      <mat-checkbox [(ngModel)]="anamnesis.uso_farmaci" labelPosition="before" name="uso-farmaci" color="primary">
+      <h4>Uso di farmaci</h4>
+      </mat-checkbox>
+      </div>
+
+      <div>
+      <h4>Problemi oculari:</h4>
+      <mat-checkbox [(ngModel)]="anamnesis.lacrimazione" labelPosition="before" name="lacrimazione" color="primary">
+      Lacrimazione
+      </mat-checkbox><br>
+      <mat-checkbox [(ngModel)]="anamnesis.fotofobia" labelPosition="before" name="fotofobia" color="primary">
+      Fotofobia
+      </mat-checkbox><br>
+      <mat-checkbox [(ngModel)]="anamnesis.prurito_cong" labelPosition="before" name="prur-cong" color="primary">
+      Prurito congiuntiva
+      </mat-checkbox><br>
+      <mat-checkbox [(ngModel)]="anamnesis.bruciore_cong" labelPosition="before" name="bruciore-cong" color="primary">
+      Bruciore congiuntiva
+      </mat-checkbox>
+      </div>
+
+
+
+
     </mat-step>
     <mat-step label="Esame medico">
       Content 3
@@ -22,5 +195,7 @@
       Content 4
     </mat-step>
   </mat-horizontal-stepper>
+  <button mat-raised-button id="submit-newanamnesis" type="submit">Create</button>
+  </form>
 </div>
 </app-content>

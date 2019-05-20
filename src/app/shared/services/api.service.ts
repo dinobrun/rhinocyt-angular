@@ -16,6 +16,7 @@ import {
   Slide,
   City,
   Anamnesis,
+  PrickTest,
   ApiModel,
   ModelList
 } from '../interfaces/api-models';
@@ -54,6 +55,7 @@ export class ApiService {
   private slide: SlideApiHelper;
   private city: CityApiHelper;
   private anamnesis: AnamnesisApiHelper;
+  private prickTest: PrickTestApiHelper;
 
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -89,6 +91,7 @@ export class ApiService {
     this.slide          = new SlideApiHelper(this);
     this.city           = new CityApiHelper(this);
     this.anamnesis      = new AnamnesisApiHelper(this);
+    this.prickTest      = new PrickTestApiHelper(this);
   }
 
   /**
@@ -177,6 +180,13 @@ export class ApiService {
    */
   public Anamnesis(): AnamnesisApiHelper {
     return this.anamnesis;
+  }
+
+  /**
+   * Returns the prick test's model API.
+   */
+  public PrickTest(): PrickTestApiHelper {
+    return this.prickTest;
   }
 
 }
@@ -604,3 +614,12 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
      return 'anamnesis/';
    }
  }
+
+ /**
+  * The prick-test API helper
+  */
+  class PrickTestApiHelper extends WritableApiHelper<PrickTest>{
+  public getApiPath(): string {
+    return 'prick-test/';
+    }
+  }

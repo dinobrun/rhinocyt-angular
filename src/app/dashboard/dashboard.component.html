@@ -1,5 +1,5 @@
 <app-content sidenav="true">
-    <mat-list class="list list-large-content mat-elevation-z2 patient-list">
+    <mat-list class="list list-large-content patient-list">
       <mat-list-item class="list-title">
         <b>Patients</b>
         <span class="fill-space"></span>
@@ -17,7 +17,7 @@
           </button>
         </mat-form-field>
       </mat-list-item>
-      
+
       <mat-list-item *ngFor="let patient of patients | filterBy:patientFilter">
         <span class="initials" color="primary">{{ patient.initials }}</span>
         <a [routerLink]="['patient', patient.id]">{{ patient.fullName }}</a>

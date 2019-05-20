@@ -29,7 +29,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
-import { MatStepperModule, MatSelectModule, MatOptionModule, MatNativeDateModule, MAT_DATE_LOCALE} from '@angular/material';
+import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MAT_DATE_LOCALE} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -62,8 +63,10 @@ import { MatStepperModule, MatSelectModule, MatOptionModule, MatNativeDateModule
     StorageServiceModule,
     MatStepperModule,
     MatSelectModule,
+    MatInputModule,
     MatOptionModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [
     CookieService,

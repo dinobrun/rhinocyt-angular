@@ -41,12 +41,12 @@ export class NewPatientComponent implements OnInit {
       this.patient.fiscal_code = this.fiscal_code;
     }
     if(this.birthdate != undefined) {
-          this.patient.birthdate = 
+          this.patient.birthdate =
             this.birthdate.getFullYear().toString() + "-" +
-            (this.birthdate.getMonth()+1).toString() + "-" + 
+            (this.birthdate.getMonth()+1).toString() + "-" +
             this.birthdate.getDate().toString();
     }
-  											
+
   	this.patient.doctor = this.doctor.id;
 
     if(isDevMode()) {

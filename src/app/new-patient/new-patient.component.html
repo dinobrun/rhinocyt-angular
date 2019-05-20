@@ -4,48 +4,48 @@
 			<h1>Create a new patient</h1>
 			<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>First Name </mat-label> 
-					<input matInput [(ngModel)]="first_name" required="true" name="first-name" />	
+					<mat-label>First Name </mat-label>
+					<input matInput [(ngModel)]="first_name" required="true" name="first-name" />
 				</mat-form-field>
 			</div>
 			<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>Last Name </mat-label> 
-					<input matInput [(ngModel)]="last_name" required="true" name="last-name" />	
+					<mat-label>Last Name </mat-label>
+					<input matInput [(ngModel)]="last_name" required="true" name="last-name" />
 				</mat-form-field>
 			</div>
 			<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>Fiscal Code </mat-label> 
-					<input matInput [(ngModel)]="fiscal_code" minlength="16" maxlength="17"	
-						name="fiscal_code" />	
+					<mat-label>Fiscal Code </mat-label>
+					<input matInput [(ngModel)]="fiscal_code" minlength="16" maxlength="17"
+						name="fiscal_code" />
 					<mat-hint>It must be of 16 characters</mat-hint>
 				</mat-form-field>
 			</div>
 			<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>Birth Date </mat-label> 
-					<input matInput [matDatepicker]="birthdatepicker" [(ngModel)]="birthdate" 
-						name="birthdate" placeholder="dd/mm/yyyy" />	
+					<mat-label>Birth Date </mat-label>
+					<input matInput [matDatepicker]="birthdatepicker" [(ngModel)]="birthdate"
+						name="birthdate" placeholder="dd/mm/yyyy" />
 					<mat-datepicker-toggle matSuffix [for]="birthdatepicker"></mat-datepicker-toggle>
 	  			<mat-datepicker #birthdatepicker></mat-datepicker>
 				</mat-form-field>
 			</div>
 			<!--<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>Residence city </mat-label> 
-					<input matInput [(ngModel)]="residence_city" name="residence_city" />	
+					<mat-label>Residence city </mat-label>
+					<input matInput [(ngModel)]="residence_city" name="residence_city" />
 					<mat-hint>Wall Maria is no longer available</mat-hint>
 				</mat-form-field>
 			</div>
 			<div>
 				<mat-form-field appearance="legacy">
-					<mat-label>Birth city </mat-label> 
+					<mat-label>Birth city </mat-label>
 					<input matInput [(ngModel)]="birth_city" name="birth_city" />
 				</mat-form-field>
 			</div>-->
 			<div>
-				<button mat-raised-button id="submit-newpatient" type="submit" 
+				<button mat-raised-button id="submit-newpatient" type="submit"
 					[disabled]="!newPatientForm.form.valid">Create</button>
 			</div>
 		</form>

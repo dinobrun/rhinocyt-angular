@@ -125,5 +125,14 @@ export interface Anamnesis extends ApiModel {
   polip_nas_dx?: number;
   essudato?: string;
   ipertr_adenoidea?: number;
-  patient: Patient;
+  patient?: number;
+}
+
+/**
+ * Interface for the city's model.
+ */
+export interface PrickTest extends ApiModel {
+  allergy?: string;
+  period?: string;
+  anamnesis?: string;
 }
