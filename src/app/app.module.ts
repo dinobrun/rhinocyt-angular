@@ -29,7 +29,9 @@ import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
-import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MAT_DATE_LOCALE} from '@angular/material';
+import { AnamnesisComponent } from './anamnesis/anamnesis.component';
+import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MAT_DATE_LOCALE} from '@angular/material';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, Mat
     SignupComponent,
     AboutComponent,
     LogoutComponent,
-    AddAnamnesisComponent
+    AddAnamnesisComponent,
+    AnamnesisComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, Mat
     MatOptionModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatExpansionModule,
     MatTreeModule
   ],
   providers: [

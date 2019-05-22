@@ -126,13 +126,22 @@ export interface Anamnesis extends ApiModel {
   essudato?: string;
   ipertr_adenoidea?: number;
   patient?: number;
+  anamnesis_date?: string;
 }
 
 /**
- * Interface for the city's model.
+ * Interface for the prick test's model.
  */
 export interface PrickTest extends ApiModel {
   allergy?: string;
   period?: string;
   anamnesis?: string;
+}
+
+/**
+ * Interface for the prick test's model.
+ */
+export interface Allergy extends ApiModel {
+  type?: string;
+  value?: boolean;
 }

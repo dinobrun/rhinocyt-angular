@@ -2,7 +2,7 @@ import { Component, OnInit, isDevMode} from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 
-import { Patient, Anamnesis } from '../shared/interfaces/api-models';
+import { Patient, Anamnesis, Allergy, ModelList} from '../shared/interfaces/api-models';
 import { ApiService } from '../shared/services/api.service';
 import { SidenavItem } from '../shared/classes/sidenav-item';
 
@@ -20,6 +20,7 @@ export class AddAnamnesisComponent implements OnInit {
 
   public patient: Patient;
   public anamnesis: Anamnesis = {};
+  public allergy_list: Allergy[] = [];
 
   private ALLERG_TYPE: Choice[] = [
     {key: 'AL', value: 'alimenti'},
@@ -83,17 +84,22 @@ export class AddAnamnesisComponent implements OnInit {
     {key: 'EMA', value: 'ematosi'}
   ];
 
-
-
-  public anamnesis_test: Anamnesis[] = [];
+  private POLIP_NUM_TYPE: Choice[] = [
+    {key: "1", value: "1"},
+    {key: "2", value: "2"},
+    {key: "3", value: "3"},
+    {key: "4", value: "4"}
+  ]
 
   public error: boolean = false;
+  public prickTest: boolean = false;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
+
     this.apiService.Patient().get(id).subscribe(
       (data: Patient) => {
         this.patient = data;
@@ -101,22 +107,25 @@ export class AddAnamnesisComponent implements OnInit {
           this.error = true;
         }
       });
-/**
-      let params = new HttpParams()
-      params = params.set('patient', String(id));
 
-      this.apiService.Anamnesis().query(params)
-      .subscribe((data: Anamnesis[]) => {
+    //set limit of objects to retrieve
+    let params = new HttpParams()
+    params = params.set('limit', '18');
 
-        console.log("Anamnesis:", data);
-      },
-      error => {
+    //get all allergy from server
+    this.apiService.Allergy().query(params).subscribe( (data: Allergy[]) =>
+    	{
+    		this.allergy_list = data;
         if(isDevMode()){
-          console.log(error);
+         console.log("Allergies: ", data);
         }
-      });
-*/
+    	});
+
   }
+
+
+
+
   onSubmit() {
     this.anamnesis.patient = this.patient.id;
 
@@ -129,7 +138,7 @@ export class AddAnamnesisComponent implements OnInit {
         console.log(error);
       },
       () => {
-        console.log("weeeeeeeeee");;
+        console.log(this.anamnesis.id);;
       });
   }
 

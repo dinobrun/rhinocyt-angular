@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PatientComponent} from './patient/patient.component';
 import { NewPatientComponent} from './new-patient/new-patient.component';
 import { AddcellsComponent} from './addcells/addcells.component';
+import { AnamnesisComponent} from './anamnesis/anamnesis.component';
 import { AddAnamnesisComponent} from './add-anamnesis/add-anamnesis.component';
 import { ReviewComponent } from './review/review.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
@@ -61,6 +62,11 @@ const routes: Routes = [
     path: 'dashboard/review/:id',
     component: ReviewComponent,
     data: { title: 'Review' }
+  },
+  {
+    path: 'dashboard/patient/:id/anamnesis',
+    component: AnamnesisComponent,
+    data: { title: 'Anamnesis' }
   },
   {
     path: 'dashboard/patient/:id/add-anamnesis',

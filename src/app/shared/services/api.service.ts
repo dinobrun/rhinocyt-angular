@@ -17,6 +17,7 @@ import {
   City,
   Anamnesis,
   PrickTest,
+  Allergy,
   ApiModel,
   ModelList
 } from '../interfaces/api-models';
@@ -56,6 +57,7 @@ export class ApiService {
   private city: CityApiHelper;
   private anamnesis: AnamnesisApiHelper;
   private prickTest: PrickTestApiHelper;
+  private allergy: AllergyApiHelper;
 
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -92,6 +94,7 @@ export class ApiService {
     this.city           = new CityApiHelper(this);
     this.anamnesis      = new AnamnesisApiHelper(this);
     this.prickTest      = new PrickTestApiHelper(this);
+    this.allergy      = new AllergyApiHelper(this);
   }
 
   /**
@@ -187,6 +190,13 @@ export class ApiService {
    */
   public PrickTest(): PrickTestApiHelper {
     return this.prickTest;
+  }
+
+  /**
+   * Returns the allergy's model API.
+   */
+  public Allergy(): AllergyApiHelper {
+    return this.allergy;
   }
 
 }
@@ -583,6 +593,15 @@ class CellExtractionApiHelper extends WritableApiHelper<CellExtraction> {
 class CellCategoryApiHelper extends ReadOnlyApiHelper<CellCategory> {
   public getApiPath(): string {
     return 'cell-categories/';
+  }
+}
+
+/**
+ * The cell category's API helper.
+ */
+class AllergyApiHelper extends ReadOnlyApiHelper<Allergy> {
+  public getApiPath(): string {
+    return 'allergy/';
   }
 }
 

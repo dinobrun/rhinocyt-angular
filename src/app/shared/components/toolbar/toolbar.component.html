@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
-  <a routerLink="/" class="logo">cynochew</a>
+  <a routerLink="/" class="logo">Rhinocyt</a>
   <span class="fill-space"></span>
-  
+
   <!-- if logged show doctor -->
   <ng-container *ngIf="authService.isLogged && doctor.username">
     <button mat-button [matMenuTriggerFor]="menu">{{ doctor.username }} <mat-icon>arrow_drop_down</mat-icon></button>

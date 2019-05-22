@@ -1,0 +1,10 @@
+<app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
+  <div id="patient-anamnesis" *ngIf="anamnesis_list" class="mat-elevation-z2">
+  	<b> Anamnesis </b>
+      <mat-list>
+  	    <mat-list-item *ngFor="let anamnesis of anamnesis_list">
+  	      <p>Anamnesis of {{ anamnesis.anamnesis_date | date:'medium'}}</p>
+  	    </mat-list-item>
+  	   </mat-list>
+  </div>
+</app-content>
