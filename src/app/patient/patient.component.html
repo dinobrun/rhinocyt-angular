@@ -12,10 +12,13 @@
 
 <div id="patient-extractions" *ngIf="extractions" class="mat-elevation-z2">
 	<b> Extractions </b>
-    <mat-list>
-	    <mat-list-item *ngFor="let extraction of extractions">
-	      <p><a routerLink="/dashboard/review/{{extraction.id}}">#{{extraction.id}}: Extraction of {{ extraction.extraction_date | date:'medium'}} executes on {{extraction.slides.length}} slides</a></p>
-	    </mat-list-item>
-	   </mat-list>
+
+	<mat-nav-list>
+		<a mat-list-item *ngFor="let extraction of extractions" routerLink="/dashboard/review/{{extraction.id}}">
+			<mat-icon mat-list-icon>blur_on</mat-icon>
+			Extraction of {{ extraction.extraction_date | date:'medium'}} executes on {{extraction.slides.length}} slides
+		</a>
+	</mat-nav-list>
+
 </div>
 </app-content>

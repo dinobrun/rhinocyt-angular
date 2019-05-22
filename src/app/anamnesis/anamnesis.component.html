@@ -1,10 +1,15 @@
-<app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
+<app-content [sidenav]="true" contentPadding="none" [error]="error">
+  <div id="anamnesis-card" *ngIf="patient" class="mat-elevation-z2">
+    <h2> {{ patient.first_name }} {{ patient.last_name }} </h2>
+      <a routerLink="add-anamnesis" routerLinkActive="active" mat-raised-button id="add-anamnesis" >Add new anamnesis</a>
+  </div>
+
   <div id="patient-anamnesis" *ngIf="anamnesis_list" class="mat-elevation-z2">
-  	<b> Anamnesis </b>
-      <mat-list>
+    	<b> Anamnesis </b>
+      <mat-nav-list>
   	    <mat-list-item *ngFor="let anamnesis of anamnesis_list">
   	      <p>Anamnesis of {{ anamnesis.anamnesis_date | date:'medium'}}</p>
   	    </mat-list-item>
-  	   </mat-list>
+  	   </mat-nav-list>
   </div>
 </app-content>

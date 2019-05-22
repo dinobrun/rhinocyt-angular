@@ -632,6 +632,40 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
    public getApiPath(): string {
      return 'anamnesis/';
    }
+
+   public create(data: any): Observable<Anamnesis> {
+     const allergyList = data.allergyList;
+     const anamnesis = data.anamnesis;
+     let prickTest: PrickTest = {};
+
+     const url = this.getApiUrl();
+     let request: Observable<Object> = this.handlePostRequest<Anamnesis>(url, anamnesis, 'create');
+
+
+     if (allergyList.length > 0){
+       //there are Allergies
+       //remove the first element from array of slides
+       const allergy = allergyList.shift();
+       //pipe the first slide creation to the request picking the id from cellExtraction
+       request = request.pipe(mergeMap((anamnesis: Anamnesis, index) => {
+         prickTest.anamnesis = anamnesis.id;
+         prickTest.allergy = allergy.id;
+         return this.apiService.PrickTest().create(prickTest);
+       }));
+
+       //loop over allergies array
+       for (const allergy of allergyList){
+         request = request.pipe(mergeMap((prickTestData: PrickTest, index) => {
+           prickTest.anamnesis = prickTestData.anamnesis;
+           prickTest.allergy = allergy.id;
+           return this.apiService.PrickTest().create(prickTest);
+         }));
+       }
+      }
+
+
+     return <Observable<Anamnesis>>request;
+   }
  }
 
  /**

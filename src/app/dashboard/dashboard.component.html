@@ -18,10 +18,14 @@
         </mat-form-field>
       </mat-list-item>
 
-      <mat-list-item *ngFor="let patient of patients | filterBy:patientFilter">
-        <span class="initials" color="primary">{{ patient.initials }}</span>
-        <a [routerLink]="['patient', patient.id]">{{ patient.fullName }}</a>
-      </mat-list-item>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let patient of patients | filterBy:patientFilter" [routerLink]="['patient', patient.id]">
+          <!--<span class="initials" color="primary">{{ patient.initials }}</span>-->
+          <mat-icon mat-list-icon>person</mat-icon>
+          <h2 mat-line>{{patient.fullName}}</h2>
+          <h5 mat-line> Fiscal code: {{patient.fiscal_code}}</h5>
+        </a>
+      </mat-nav-list>
 
       <mat-list-item *ngIf="!patients; else noPatients">Loading the patients...</mat-list-item>
       <ng-template #noPatients>

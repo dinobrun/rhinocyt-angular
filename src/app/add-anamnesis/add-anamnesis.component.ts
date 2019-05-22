@@ -20,7 +20,9 @@ export class AddAnamnesisComponent implements OnInit {
 
   public patient: Patient;
   public anamnesis: Anamnesis = {};
+  public anamnesis_test: Anamnesis = {};
   public allergy_list: Allergy[] = [];
+  public allergySelectedList: Allergy[] = [];
 
   private ALLERG_TYPE: Choice[] = [
     {key: 'AL', value: 'alimenti'},
@@ -103,6 +105,7 @@ export class AddAnamnesisComponent implements OnInit {
     this.apiService.Patient().get(id).subscribe(
       (data: Patient) => {
         this.patient = data;
+        this.anamnesis.patient = data.id;
         if(this.patient == undefined){
           this.error = true;
         }
@@ -124,22 +127,36 @@ export class AddAnamnesisComponent implements OnInit {
   }
 
 
-
-
   onSubmit() {
-    this.anamnesis.patient = this.patient.id;
+    //if prick test is positive
+    if (this.prickTest == true){
+      for(const allergy_temp of this.allergy_list){
+        //get all selected allergies
+        if (allergy_temp.value == true){
+          this.allergySelectedList.push(allergy_temp)
+        }
+      }
+    }
 
-    this.apiService.Anamnesis().create(this.anamnesis)
+
+    let data = {
+      anamnesis: this.anamnesis,
+      allergyList: this.allergySelectedList
+    }
+
+
+    this.apiService.Anamnesis().create(data)
     .subscribe(
       (anamnesis: Anamnesis) => {
-        this.anamnesis = anamnesis;
+        this.anamnesis_test = anamnesis;
       },
       error => {
         console.log(error);
       },
       () => {
-        console.log(this.anamnesis.id);;
+        this.router.navigate(['/dashboard/patient/' + this.patient.id + '/anamnesis']);
       });
+
   }
 
 }

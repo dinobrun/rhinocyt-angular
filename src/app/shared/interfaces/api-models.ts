@@ -133,9 +133,9 @@ export interface Anamnesis extends ApiModel {
  * Interface for the prick test's model.
  */
 export interface PrickTest extends ApiModel {
-  allergy?: string;
+  allergy?: number;
   period?: string;
-  anamnesis?: string;
+  anamnesis?: number;
 }
 
 /**

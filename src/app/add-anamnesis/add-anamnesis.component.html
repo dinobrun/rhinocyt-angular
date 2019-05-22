@@ -307,18 +307,18 @@
       <div>
         <h4>Esito prick test:</h4>
         <mat-radio-group [(ngModel)]="prickTest" name="prick-test" aria-label="prick-test">
-          <mat-radio-button value=true color="primary" style="margin-right: 10px">Positivo </mat-radio-button>
-          <mat-radio-button value=false color="primary">Negativo </mat-radio-button>
+          <mat-radio-button [value]="true" color="primary" style="margin-right: 10px">Positivo </mat-radio-button>
+          <mat-radio-button [value]="false" color="primary">Negativo </mat-radio-button>
         </mat-radio-group>
       </div>
       <br>
 
     <div *ngIf="allergy_list.length > 0" style="width: 35%; float: left;" >
-      <mat-checkbox [disabled]="prickTest" [(ngModel)]="allergy_list[0].value" labelPosition="after" name="allergy0" color="primary">
+      <mat-checkbox [disabled]="!prickTest" [(ngModel)]="allergy_list[0].value" labelPosition="after" name="allergy0" color="primary">
           {{allergy_list[0].type}}
       </mat-checkbox><br>
 
-      <mat-checkbox [disabled]="prickTest" [(ngModel)]="allergy_list[1].value" labelPosition="after" name="allergy" color="primary">
+      <mat-checkbox [disabled]="!prickTest" [(ngModel)]="allergy_list[1].value" labelPosition="after" name="allergy" color="primary">
           {{allergy_list[1].type}}
       </mat-checkbox><br>
 

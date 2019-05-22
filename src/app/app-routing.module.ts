@@ -69,7 +69,7 @@ const routes: Routes = [
     data: { title: 'Anamnesis' }
   },
   {
-    path: 'dashboard/patient/:id/add-anamnesis',
+    path: 'dashboard/patient/:id/anamnesis/add-anamnesis',
     component: AddAnamnesisComponent,
     data: { title: 'Add anamnesis' }
   },
