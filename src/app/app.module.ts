@@ -31,6 +31,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
 import { AnamnesisComponent } from './anamnesis/anamnesis.component';
 import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MAT_DATE_LOCALE} from '@angular/material';
+import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 
 
 
@@ -52,7 +53,8 @@ import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, Mat
     AboutComponent,
     LogoutComponent,
     AddAnamnesisComponent,
-    AnamnesisComponent
+    AnamnesisComponent,
+    DiagnosisComponent
   ],
   imports: [
     BrowserModule,

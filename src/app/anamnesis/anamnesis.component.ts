@@ -17,6 +17,18 @@ export class AnamnesisComponent implements OnInit {
   public patient: Patient;
   public error: Boolean = false;
 
+  public sidenavItems: SidenavItem [] = [
+    SidenavItem.internalLink("Dashboard", "/dashboard", {icon: 'dashboard'}),
+    SidenavItem.separator(),
+    SidenavItem.internalLink("Add Cells", "../addcells", {icon: 'add_box'}),
+    SidenavItem.selectedLable("Anamnesis", " ", {icon: 'description'}),
+    SidenavItem.internalLink("Diagnosis", "../diagnosis", {icon: 'assignment'}),
+    SidenavItem.separator(),
+    SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),
+    SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),
+    SidenavItem.internalLink("Import/Export", "", {icon: 'import_export', disabled: true}),
+  ];
+
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

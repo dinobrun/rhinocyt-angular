@@ -19,9 +19,11 @@ export class PatientComponent implements OnInit {
   public error : boolean = false;
 
   public sidenavItems: SidenavItem [] = [
+    SidenavItem.internalLink("Dashboard", "/dashboard", {icon: 'dashboard'}),
+    SidenavItem.separator(),
     SidenavItem.internalLink("Add Cells", "addcells", {icon: 'add_box'}),
-    SidenavItem.internalLink("Anamnesis", "anamnesis", {icon: 'description', disabled: false}),
-    SidenavItem.internalLink("Diagnosis", "", {icon: 'assignment', disabled: true}),
+    SidenavItem.internalLink("Anamnesis", "anamnesis", {icon: 'description'}),
+    SidenavItem.internalLink("Diagnosis", "diagnosis", {icon: 'assignment'}),
     SidenavItem.separator(),
     SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),
     SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),

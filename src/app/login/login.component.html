@@ -10,7 +10,7 @@
     <mat-form-field>
       <input matInput type="password" placeholder="Password" required [(ngModel)]="doctor.password" name="password" #password="ngModel">
     </mat-form-field>
-    <button mat-button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
     <p>No account? Then you should <a routerLink="/signup">signup</a>.</p>
   </form>
 

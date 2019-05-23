@@ -9,9 +9,6 @@
       <div class="sidenav-content">
         <!-- items of the sidebar -->
         <mat-list>
-          <mat-list-item><a mat-button routerLink="/"><mat-icon>dashboard</mat-icon> Dashboard</a></mat-list-item>
-          <mat-list-item class="separator"></mat-list-item>
-
           <mat-list-item *ngFor="let item of sidenavItems" [ngSwitch]="item.type" [ngClass]="{'separator': item.type == 'separator'}">
             <ng-template #textItem>
               <mat-icon *ngIf="item.options.icon">{{ item.options.icon }}</mat-icon>
@@ -20,7 +17,10 @@
             <span *ngSwitchCase="'text'">
               <ng-container *ngTemplateOutlet="textItem"></ng-container>
             </span>
-            <a mat-button *ngSwitchCase="'internal_link'" [routerLink]="item.url" [target]="item.options.newTab ? '_blank' : undefined" [disabled]="item.options.disabled">
+            <a mat-button *ngSwitchCase="'selected_lable'" [disabled]="item.options.disabled" color="primary" [ngStyle]="{'background-color':'#E3F2FD'}">
+              <ng-container *ngTemplateOutlet="textItem"></ng-container>
+            </a>
+            <a mat-button *ngSwitchCase="'internal_link'" [routerLink]="item.url" [target]="item.options.newTab ? '_blank' : undefined" [disabled]="item.options.disabled" >
               <ng-container *ngTemplateOutlet="textItem"></ng-container>
             </a>
             <a mat-button *ngSwitchCase="'external_link'" [href]="item.url" [target]="item.options.newTab ? '_blank' : undefined" [disabled]="item.options.disabled">

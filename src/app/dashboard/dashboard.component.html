@@ -1,9 +1,9 @@
-<app-content sidenav="true">
+<app-content sidenav="true" [sidenav-items]=sidenavItems contentPadding="none">
     <mat-list class="list list-large-content patient-list">
       <mat-list-item class="list-title">
-        <b>Patients</b>
+        <h2>Patients</h2>
         <span class="fill-space"></span>
-        <a [routerLink]="'patient/new'" mat-icon-button mat-raised-button><mat-icon>add</mat-icon></a>
+        <a [routerLink]="'patient/new'" mat-raised-button color="primary"><mat-icon>add</mat-icon> New Patient</a>
       </mat-list-item>
 
       <mat-list-item class="filter-patients" (click)="filterPatients.focus()">
@@ -11,7 +11,7 @@
           <button matPrefix mat-icon-button>
             <mat-icon>search</mat-icon>
           </button>
-          <input matInput type="text" #filterPatients placeholder="Search a patient" [(ngModel)]="patientFilter.fullName">
+          <input matInput type="text" #filterPatients placeholder="Search a patient" [(ngModel)]="patientFilter.fiscal_code">
           <button matSuffix mat-icon-button (click)="clearPatientFilter(filterPatients)">
             <mat-icon>close</mat-icon>
           </button>

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { filter } from 'rxjs/operators';
-
 import { ApiService } from '../shared/services/api.service';
 import { AuthService } from '../shared/services/auth.service';
 import { ModelList, CellExtraction, Doctor, Patient } from '../shared/interfaces/api-models';
@@ -19,8 +17,13 @@ export class DashboardComponent implements OnInit {
   public doctor: Doctor;
   public cellExtractions: any[];
 
-  public patientFilter: {fullName: string} = {fullName: ''};
+  public patientFilter: {fiscal_code: string} = {fiscal_code: ''};
   public patients: any[];
+
+  public sidenavItems: SidenavItem [] = [
+    SidenavItem.selectedLable("Dashboard", " ", {icon: 'dashboard'}),
+    SidenavItem.separator()
+  ];
 
   constructor(private router: Router,
               private activeRoute: ActivatedRoute,
@@ -60,7 +63,7 @@ export class DashboardComponent implements OnInit {
   public clearPatientFilter(input) {
     input.value = '';
     input.focus();
-    this.patientFilter.fullName = '';
+    this.patientFilter.fiscal_code = '';
   }
 
 }

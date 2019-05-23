@@ -9,6 +9,7 @@ import { PatientComponent} from './patient/patient.component';
 import { NewPatientComponent} from './new-patient/new-patient.component';
 import { AddcellsComponent} from './addcells/addcells.component';
 import { AnamnesisComponent} from './anamnesis/anamnesis.component';
+import { DiagnosisComponent} from './diagnosis/diagnosis.component';
 import { AddAnamnesisComponent} from './add-anamnesis/add-anamnesis.component';
 import { ReviewComponent } from './review/review.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
@@ -69,9 +70,14 @@ const routes: Routes = [
     data: { title: 'Anamnesis' }
   },
   {
-    path: 'dashboard/patient/:id/anamnesis/add-anamnesis',
+    path: 'dashboard/patient/:id/add-anamnesis',
     component: AddAnamnesisComponent,
     data: { title: 'Add anamnesis' }
+  },
+  {
+    path: 'dashboard/patient/:id/diagnosis',
+    component: DiagnosisComponent,
+    data: { title: 'Diagnosis' }
   },
   {
     path: 'about',

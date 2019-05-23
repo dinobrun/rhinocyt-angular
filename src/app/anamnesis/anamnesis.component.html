@@ -1,7 +1,7 @@
-<app-content [sidenav]="true" contentPadding="none" [error]="error">
+<app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
   <div id="anamnesis-card" *ngIf="patient" class="mat-elevation-z2">
     <h2> {{ patient.first_name }} {{ patient.last_name }} </h2>
-      <a routerLink="add-anamnesis" routerLinkActive="active" mat-raised-button id="add-anamnesis" >Add new anamnesis</a>
+      <a routerLink="../add-anamnesis" routerLinkActive="active" mat-raised-button id="add-anamnesis" color="primary" ><mat-icon>add</mat-icon> New anamnesis</a>
   </div>
 
   <div id="patient-anamnesis" *ngIf="anamnesis_list" class="mat-elevation-z2">

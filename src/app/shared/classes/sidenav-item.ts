@@ -44,6 +44,17 @@ export class SidenavItem {
   }
 
   /**
+   * Returns a new internal link item.
+   * @param  text    The text of the item.
+   * @param  url     The internal link url (see routerLink input).
+   * @param  options The options for the item.
+   * @return         The internal link item.
+   */
+  public static selectedLable(text: string, url: string[] | string, options: SidenavItemOptions = {}): SidenavItem {
+    return new SidenavItem('selected_lable', text, url, options);
+  }
+
+  /**
    * Returns a new external link item.
    * @param  text    The text of the item.
    * @param  url     The external link URL.

@@ -1,0 +1,18 @@
+<app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
+  <div id="diagnosis-card" *ngIf="patient" class="mat-elevation-z2">
+    <h2> {{ patient.first_name }} {{ patient.last_name }} </h2>
+      <button mat-raised-button id="add-diagnosis" color="primary" (click)="addDiagnosis()" ><mat-icon>add</mat-icon> New diagnosis</button>
+      <div class="status-message error" *ngIf="error">
+        The diagnosis has already been made with these anamnesis and extractions
+      </div>
+  </div>
+
+  <div id="patient-diagnosis" *ngIf="diagnosis_list" class="mat-elevation-z2">
+    	<b> Diagnosis </b>
+      <mat-nav-list>
+  	    <mat-list-item *ngFor="let diagnosis of diagnosis_list">
+  	      <p>Diagnosis of {{ diagnosis.diagnosis_date | date:'medium'}}</p>
+  	    </mat-list-item>
+  	   </mat-nav-list>
+  </div>
+</app-content>

@@ -19,6 +19,7 @@ import {
   PrickTest,
   Allergy,
   ApiModel,
+  DiagnosisExtraction,
   ModelList
 } from '../interfaces/api-models';
 
@@ -58,6 +59,7 @@ export class ApiService {
   private anamnesis: AnamnesisApiHelper;
   private prickTest: PrickTestApiHelper;
   private allergy: AllergyApiHelper;
+  private diagnosisExtraction: DiagnosisExtractionApiHelper;
 
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -85,16 +87,17 @@ export class ApiService {
 
 
     // Creating the API helpers
-    this.doctor         = new DoctorApiHelper(this);
-    this.patient        = new PatientApiHelper(this);
-    this.cell           = new CellApiHelper(this);
-    this.cellExtraction = new CellExtractionApiHelper(this);
-    this.cellCategory   = new CellCategoryApiHelper(this);
-    this.slide          = new SlideApiHelper(this);
-    this.city           = new CityApiHelper(this);
-    this.anamnesis      = new AnamnesisApiHelper(this);
-    this.prickTest      = new PrickTestApiHelper(this);
-    this.allergy      = new AllergyApiHelper(this);
+    this.doctor              = new DoctorApiHelper(this);
+    this.patient             = new PatientApiHelper(this);
+    this.cell                = new CellApiHelper(this);
+    this.cellExtraction      = new CellExtractionApiHelper(this);
+    this.cellCategory        = new CellCategoryApiHelper(this);
+    this.slide               = new SlideApiHelper(this);
+    this.city                = new CityApiHelper(this);
+    this.anamnesis           = new AnamnesisApiHelper(this);
+    this.prickTest           = new PrickTestApiHelper(this);
+    this.allergy             = new AllergyApiHelper(this);
+    this.diagnosisExtraction = new DiagnosisExtractionApiHelper(this);
   }
 
   /**
@@ -197,6 +200,13 @@ export class ApiService {
    */
   public Allergy(): AllergyApiHelper {
     return this.allergy;
+  }
+
+  /**
+   * Returns the diagnosis extraction's model API.
+   */
+  public DiagnosisExtraction(): DiagnosisExtractionApiHelper {
+    return this.diagnosisExtraction;
   }
 
 }
@@ -662,10 +672,21 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
          }));
        }
       }
-
-
      return <Observable<Anamnesis>>request;
    }
+
+   //get last anamnesis
+   public last(patient_id: number): Observable<Anamnesis> {
+     const url = this.getApiUrl(undefined, 'last');
+     let params: HttpParams = new HttpParams();
+     if (!isNaN(patient_id)) {
+       params = params.set('patient', String(patient_id));
+     }
+     return this.handleGetRequest(url, 'last', {params: params});
+   }
+
+
+
  }
 
  /**
@@ -676,3 +697,13 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
     return 'prick-test/';
     }
   }
+
+  /**
+   * The DiagnosisExtraction API helper
+   */
+   class DiagnosisExtractionApiHelper extends WritableApiHelper<PrickTest>{
+   public getApiPath(): string {
+     return 'diagnosis-extractions/';
+     }
+
+   }

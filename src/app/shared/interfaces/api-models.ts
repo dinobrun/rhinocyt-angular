@@ -145,3 +145,21 @@ export interface Allergy extends ApiModel {
   type?: string;
   value?: boolean;
 }
+
+/**
+ * Interface for the diagnosis extraction's model.
+ */
+export interface DiagnosisExtraction extends ApiModel {
+  patient?: number;
+  cell_extraction?: number;
+  anamnesis?: number;
+}
+
+/**
+ * Interface for the diagnosis's model.
+ */
+export interface Diagnosis extends ApiModel {
+  diagnosis_extraction?: number;
+  name?: number;
+  information?: number;
+}

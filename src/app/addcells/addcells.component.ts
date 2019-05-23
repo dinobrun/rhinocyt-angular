@@ -23,13 +23,16 @@ export class AddcellsComponent implements OnInit {
   public error: boolean = false;
 
   public sidenavItems: SidenavItem [] = [
-    SidenavItem.internalLink("Anamnesis", "", {icon: 'description', disabled: true}),
-    SidenavItem.internalLink("Diagnosis", "", {icon: 'assignment', disabled: true}),
+    SidenavItem.internalLink("Dashboard", "/dashboard", {icon: 'dashboard'}),
+    SidenavItem.separator(),
+    SidenavItem.selectedLable("Add Cells", " ", {icon: 'add_box'}),
+    SidenavItem.internalLink("Anamnesis", "../anamnesis", {icon: 'description'}),
+    SidenavItem.internalLink("Diagnosis", "../diagnosis", {icon: 'assignment'}),
     SidenavItem.separator(),
     SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),
     SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),
     SidenavItem.internalLink("Import/Export", "", {icon: 'import_export', disabled: true}),
-  ];     
+  ];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router,
               private loadingService: LoadingService) { }
@@ -54,7 +57,7 @@ export class AddcellsComponent implements OnInit {
     .subscribe(
       (cellExtraction: CellExtraction) => {
         console.log("ID: ", cellExtraction.id);
-        this.cellExtraction = cellExtraction;     
+        this.cellExtraction = cellExtraction;
       },
       error => {
         if(isDevMode()) {
