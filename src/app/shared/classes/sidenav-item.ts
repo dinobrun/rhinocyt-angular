@@ -69,7 +69,7 @@ export class SidenavItem {
 /**
  * Type declaration of the sidenav item type.
  */
-export declare type SidenavItemType = 'text' | 'internal_link' | 'external_link' | 'separator';
+export declare type SidenavItemType = 'text' |'selected_lable' | 'internal_link' | 'external_link' | 'separator';
 
 /**
  * Type declaration of the sidenav item options.
