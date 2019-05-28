@@ -67,6 +67,12 @@ export interface CellCategory extends ApiModel {
 export interface CellExtraction extends ApiModel {
   slides: Slide[];
   extraction_date?: string;
+  epithelium_num?: number;
+  neutrophil_num?: number;
+  eosinophil_num?: number;
+  mastocyte_num?: number;
+  lymphocyte_num?: number;
+  mucipara_num?: number;
 }
 
 /**
@@ -162,4 +168,12 @@ export interface Diagnosis extends ApiModel {
   diagnosis_extraction?: number;
   name?: number;
   information?: number;
+}
+
+/**
+ * Interface for the report's model.
+ */
+export interface Report extends ApiModel {
+  cell_extraction?: number;
+  anamnesis?: number;
 }

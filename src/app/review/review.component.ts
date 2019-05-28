@@ -34,16 +34,16 @@ export class ReviewComponent implements OnInit {
   7: []
 }
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, 
-              public loadingService: LoadingService) { 
+  constructor(private apiService: ApiService, private route: ActivatedRoute,
+              public loadingService: LoadingService) {
   }
 
   ngOnInit() {
   	const id = +this.route.snapshot.paramMap.get('id');
     //Get the cell extractions and cells
-  	let req = this.apiService.CellExtraction().get(id).subscribe( 
+  	let req = this.apiService.CellExtraction().get(id).subscribe(
       (data: CellExtraction) => {
-        this.cellExtraction = data; 
+        this.cellExtraction = data;
         if(this.cellExtraction == undefined){
           this.error = true;
         }
@@ -65,11 +65,11 @@ export class ReviewComponent implements OnInit {
     console.log(req);
 
     //Get cell categories
-  	this.apiService.CellCategory().all().subscribe( (data: ModelList<CellCategory>) => 
+  	this.apiService.CellCategory().all().subscribe( (data: ModelList<CellCategory>) =>
   		{
   			this.cellCategories = data.results;
         if(isDevMode()){
-         console.log("Cell categories ", this.cellCategories);  
+         console.log("Cell categories ", this.cellCategories);
         }
   		});
   }
@@ -90,11 +90,11 @@ export class ReviewComponent implements OnInit {
 
 
     if (isDevMode()) {
-      let log = "Change category of cell " 
-                + (cell.id).toString() 
-                + " from " 
-                + this.cellCategories[cell.cell_category-1].name 
-                + " to " 
+      let log = "Change category of cell "
+                + (cell.id).toString()
+                + " from "
+                + this.cellCategories[cell.cell_category-1].name
+                + " to "
                 + cellCategory.name;
 
       console.log(log);
@@ -125,14 +125,14 @@ export class ReviewComponent implements OnInit {
     .subscribe(
     (data) => {
       if(isDevMode()){
-       console.log("Data returned from delete: ", data);           
-      }    
+       console.log("Data returned from delete: ", data);
+      }
     },
     error => {
       if(isDevMode()){
         console.log("Error delete on review.component: ", error);
       }
-    });        
+    });
   }
 
   /**
@@ -144,8 +144,8 @@ export class ReviewComponent implements OnInit {
     .subscribe(
     (data) => {
       if(isDevMode()){
-       console.log("Data returned from update: ", data);           
-      }   
+       console.log("Data returned from update: ", data);
+      }
     },
     error => {
       if(isDevMode()){
@@ -170,7 +170,7 @@ export class ReviewComponent implements OnInit {
         this.deleteCellFromExtraction(cell);
       }
     }
-    
+
 
     for(let category of this.cellCategories) {
       for (let cell of this.cellByCat[category.id]){

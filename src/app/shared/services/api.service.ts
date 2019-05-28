@@ -18,6 +18,7 @@ import {
   Anamnesis,
   PrickTest,
   Allergy,
+  Report,
   ApiModel,
   DiagnosisExtraction,
   ModelList
@@ -60,6 +61,7 @@ export class ApiService {
   private prickTest: PrickTestApiHelper;
   private allergy: AllergyApiHelper;
   private diagnosisExtraction: DiagnosisExtractionApiHelper;
+  private report: ReportApiHelper;
 
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -98,6 +100,7 @@ export class ApiService {
     this.prickTest           = new PrickTestApiHelper(this);
     this.allergy             = new AllergyApiHelper(this);
     this.diagnosisExtraction = new DiagnosisExtractionApiHelper(this);
+    this.report              = new ReportApiHelper(this);
   }
 
   /**
@@ -207,6 +210,13 @@ export class ApiService {
    */
   public DiagnosisExtraction(): DiagnosisExtractionApiHelper {
     return this.diagnosisExtraction;
+  }
+
+  /**
+   * Returns the report's API helper.
+   */
+  public Report(): ReportApiHelper {
+    return this.report;
   }
 
 }
@@ -705,5 +715,13 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
    public getApiPath(): string {
      return 'diagnosis-extractions/';
      }
-
    }
+
+   /**
+    * The report API helper
+    */
+    class ReportApiHelper extends WritableApiHelper<Report>{
+    public getApiPath(): string {
+      return 'report/';
+      }
+    }

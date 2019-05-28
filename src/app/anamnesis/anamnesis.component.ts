@@ -2,7 +2,7 @@ import { Component, OnInit , isDevMode} from '@angular/core';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
 
-import { Patient, Anamnesis } from '../shared/interfaces/api-models';
+import { Patient, Anamnesis, CellExtraction } from '../shared/interfaces/api-models';
 import { ApiService } from '../shared/services/api.service';
 import { SidenavItem } from '../shared/classes/sidenav-item';
 
@@ -56,6 +56,7 @@ export class AnamnesisComponent implements OnInit {
           console.log(error);
         }
       });
+
   }
 
 }

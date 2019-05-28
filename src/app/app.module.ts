@@ -30,8 +30,9 @@ import { AboutComponent } from './about/about.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
 import { AnamnesisComponent } from './anamnesis/anamnesis.component';
-import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MAT_DATE_LOCALE} from '@angular/material';
+import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MatDialogModule, MAT_DATE_LOCALE} from '@angular/material';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 
@@ -54,7 +55,8 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
     LogoutComponent,
     AddAnamnesisComponent,
     AnamnesisComponent,
-    DiagnosisComponent
+    DiagnosisComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -73,12 +75,14 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
     MatNativeDateModule,
     MatRadioModule,
     MatExpansionModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialogModule
   ],
   providers: [
     CookieService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

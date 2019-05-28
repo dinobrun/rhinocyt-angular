@@ -6,6 +6,8 @@ import { ApiService } from '../shared/services/api.service';
 import { LoadingService } from '../shared/services/loading.service';
 import { LoaderComponent } from '../shared/components/loader/loader.component';
 import { SidenavItem } from '../shared/classes/sidenav-item';
+import {MatDialog} from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-addcells',
@@ -35,7 +37,7 @@ export class AddcellsComponent implements OnInit {
   ];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router,
-              private loadingService: LoadingService) { }
+              private loadingService: LoadingService, public dialog: MatDialog) { }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -76,26 +78,32 @@ export class AddcellsComponent implements OnInit {
     }
   }
 
-  onSubmit() : void {
-    //place where extraction and classification start
-    let files = Array.from(this.filesList);
+  submitCells() {
+    const dialogRef = this.dialog.open(DialogComponent);
 
-    let dataSlides = [];
-    for(let file of files) {
-      dataSlides.push({image: file, patient: this.patient.id});
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == true){
+        //place where extraction and classification start
+        let files = Array.from(this.filesList);
 
-    let data = {
-      patient: this.patient.id,
-      slides: dataSlides
-    }
+        let dataSlides = [];
+        for(let file of files) {
+          dataSlides.push({image: file, patient: this.patient.id});
+        }
 
-    if (isDevMode()) {
-      console.log("List of files: ", files);
-      console.log("Data slide: ", data);
-    }
+        let data = {
+          patient: this.patient.id,
+          slides: dataSlides
+        }
 
-    this.executeExtraction(data);
+        if (isDevMode()) {
+          console.log("List of files: ", files);
+          console.log("Data slide: ", data);
+        }
+
+        this.executeExtraction(data);
+      }
+    });
   }
 
 }
