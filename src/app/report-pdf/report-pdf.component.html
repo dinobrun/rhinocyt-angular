@@ -1,6 +1,6 @@
 <app-content [sidenav]="true" [sidenav-items]=sidenavItems [error]="error">
   <div *ngIf="patient">
     <h1>Download PDF report of {{ patient.first_name }} {{ patient.last_name }}</h1>
-    <button mat-raised-button (click)="ifAlreadyExist()" color="primary">Download</button>
+    <button *ngIf="anamnesis.id || cellExtraction.id" mat-raised-button (click)="ifAlreadyExist()" color="primary">Download</button>
   </div>
 </app-content>
