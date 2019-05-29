@@ -2,16 +2,24 @@
 	<div *ngIf="patient">
 		<form #addcellsForm="ngForm">
 			<h1>Add slides of {{ patient.first_name }} {{ patient.last_name }}</h1>
-			<div>
+			<div *ngIf="!submitted">
 				<label>Select a set of slide </label>
 				<input #file [(ngModel)]="fileModel" type="file" id="addcell" name="addcell" accept="image/*"
 	            multiple="true" required="true" (change)="onChange(file.files)"/>
-			</div>
-	    <div>
+				<br>
 	      <li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
 	    </div>
+			<div *ngIf="submitted">
+				<h2>Caro utente,</h2>
+				<p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
+				su un server gratuito,
+				pertanto potrebbe apparire un pò lento.
+				Per questa sperimentazione preliminare non possiamo fare di più.
+				Per 50 campi normalmente impiega <b>6-8 minuti</b>, il tempo di un caffè.</p>
+				<h3>Grazie per la comprensione.</h3>
+			</div>
 			<div>
-				<button mat-raised-button (click)="submitCells()" [disabled]="addcellsForm.invalid" color="primary">Send</button>
+				<button *ngIf="!submitted" mat-raised-button (click)="submitCells()" [disabled]="addcellsForm.invalid" color="primary">Send</button>
 			</div>
 			<app-loader [showLoader]='loadingService.loading'></app-loader>
 		</form>

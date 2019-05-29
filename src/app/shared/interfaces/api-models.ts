@@ -176,4 +176,5 @@ export interface Diagnosis extends ApiModel {
 export interface Report extends ApiModel {
   cell_extraction?: number;
   anamnesis?: number;
+  report_file?: string;
 }

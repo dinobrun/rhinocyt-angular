@@ -35,6 +35,7 @@ export class ApiService {
    */
   private static readonly BASE_API_URL: string = 'http://127.0.0.1:8000/api/';
 
+
   /**
    * The state of debug of the service.
    */

@@ -32,7 +32,7 @@ import { AddAnamnesisComponent } from './add-anamnesis/add-anamnesis.component';
 import { AnamnesisComponent } from './anamnesis/anamnesis.component';
 import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MatDialogModule, MAT_DATE_LOCALE} from '@angular/material';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 
 
 
@@ -56,7 +56,7 @@ import { DialogComponent } from './dialog/dialog.component';
     AddAnamnesisComponent,
     AnamnesisComponent,
     DiagnosisComponent,
-    DialogComponent
+    ReportPdfComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,7 +82,6 @@ import { DialogComponent } from './dialog/dialog.component';
     CookieService,
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
-  bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

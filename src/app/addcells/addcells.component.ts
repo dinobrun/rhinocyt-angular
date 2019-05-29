@@ -6,8 +6,6 @@ import { ApiService } from '../shared/services/api.service';
 import { LoadingService } from '../shared/services/loading.service';
 import { LoaderComponent } from '../shared/components/loader/loader.component';
 import { SidenavItem } from '../shared/classes/sidenav-item';
-import {MatDialog} from '@angular/material';
-import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-addcells',
@@ -23,6 +21,7 @@ export class AddcellsComponent implements OnInit {
   public cellExtraction: CellExtraction;
 
   public error: boolean = false;
+  public submitted: boolean = false;
 
   public sidenavItems: SidenavItem [] = [
     SidenavItem.internalLink("Dashboard", "/dashboard", {icon: 'dashboard'}),
@@ -31,13 +30,13 @@ export class AddcellsComponent implements OnInit {
     SidenavItem.internalLink("Anamnesis", "../anamnesis", {icon: 'description'}),
     SidenavItem.internalLink("Diagnosis", "../diagnosis", {icon: 'assignment'}),
     SidenavItem.separator(),
-    SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),
+    SidenavItem.internalLink("Report PDF", "../report-pdf", {icon: 'assessment'}),
     SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),
     SidenavItem.internalLink("Import/Export", "", {icon: 'import_export', disabled: true}),
   ];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router,
-              private loadingService: LoadingService, public dialog: MatDialog) { }
+              private loadingService: LoadingService) { }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -79,31 +78,26 @@ export class AddcellsComponent implements OnInit {
   }
 
   submitCells() {
-    const dialogRef = this.dialog.open(DialogComponent);
+    //place where extraction and classification start
+    this.submitted = true;
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result == true){
-        //place where extraction and classification start
-        let files = Array.from(this.filesList);
+    let files = Array.from(this.filesList);
 
-        let dataSlides = [];
-        for(let file of files) {
-          dataSlides.push({image: file, patient: this.patient.id});
-        }
+    let dataSlides = [];
+    for(let file of files) {
+      dataSlides.push({image: file, patient: this.patient.id});
+    }
 
-        let data = {
-          patient: this.patient.id,
-          slides: dataSlides
-        }
+    let data = {
+      patient: this.patient.id,
+      slides: dataSlides
+    }
 
-        if (isDevMode()) {
-          console.log("List of files: ", files);
-          console.log("Data slide: ", data);
-        }
+    if (isDevMode()) {
+      console.log("List of files: ", files);
+      console.log("Data slide: ", data);
+    }
 
-        this.executeExtraction(data);
-      }
-    });
+    this.executeExtraction(data)
   }
-
 }

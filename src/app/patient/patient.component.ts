@@ -25,7 +25,7 @@ export class PatientComponent implements OnInit {
     SidenavItem.internalLink("Anamnesis", "anamnesis", {icon: 'description'}),
     SidenavItem.internalLink("Diagnosis", "diagnosis", {icon: 'assignment'}),
     SidenavItem.separator(),
-    SidenavItem.internalLink("Report", "", {icon: 'assessment', disabled: true}),
+    SidenavItem.internalLink("Report PDF", "report-pdf", {icon: 'assessment'}),
     SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),
     SidenavItem.internalLink("Import/Export", "", {icon: 'import_export', disabled: true}),
   ];

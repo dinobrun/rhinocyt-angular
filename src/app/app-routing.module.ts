@@ -12,10 +12,10 @@ import { AnamnesisComponent} from './anamnesis/anamnesis.component';
 import { DiagnosisComponent} from './diagnosis/diagnosis.component';
 import { AddAnamnesisComponent} from './add-anamnesis/add-anamnesis.component';
 import { ReviewComponent } from './review/review.component';
+import { ReportPdfComponent} from './report-pdf/report-pdf.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { StartupComponent } from './startup/startup.component';
 import { AboutComponent } from './about/about.component';
-
 import { TitleService } from './shared/services/title.service';
 
 
@@ -78,6 +78,11 @@ const routes: Routes = [
     path: 'dashboard/patient/:id/diagnosis',
     component: DiagnosisComponent,
     data: { title: 'Diagnosis' }
+  },
+  {
+    path: 'dashboard/patient/:id/report-pdf',
+    component: ReportPdfComponent,
+    data: { title: 'PDF report' }
   },
   {
     path: 'about',
