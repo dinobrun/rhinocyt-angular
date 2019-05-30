@@ -33,7 +33,7 @@ import { AnamnesisComponent } from './anamnesis/anamnesis.component';
 import { MatStepperModule, MatSelectModule, MatOptionModule, MatInputModule, MatNativeDateModule, MatRadioModule, MatTreeModule, MatExpansionModule, MatDialogModule, MAT_DATE_LOCALE} from '@angular/material';
 import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
-
+import {MatProgressBarModule} from '@angular/material'
 
 
 @NgModule({
@@ -76,7 +76,8 @@ import { ReportPdfComponent } from './report-pdf/report-pdf.component';
     MatRadioModule,
     MatExpansionModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ],
   providers: [
     CookieService,

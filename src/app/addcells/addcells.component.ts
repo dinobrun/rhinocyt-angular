@@ -14,7 +14,12 @@ import { SidenavItem } from '../shared/classes/sidenav-item';
 })
 export class AddcellsComponent implements OnInit {
 
+  public progressAddCellN : number = 0 ;
+
   public filesList;
+  public getFileNumber() {
+    return this.progressAddCellN;
+  }
   public fileModel: string;
 
   public patient: Patient;
@@ -36,7 +41,9 @@ export class AddcellsComponent implements OnInit {
   ];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router,
-              private loadingService: LoadingService) { }
+              private loadingService: LoadingService) {
+                this.loadingService.currentInd = 0;
+                this.loadingService.progress = 0;  }
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -47,6 +54,8 @@ export class AddcellsComponent implements OnInit {
           this.error = true;
         }
       });
+      this.loadingService.currentInd = 0;
+      this.loadingService.progress = 0;
   }
 
   /**
@@ -86,7 +95,10 @@ export class AddcellsComponent implements OnInit {
     let dataSlides = [];
     for(let file of files) {
       dataSlides.push({image: file, patient: this.patient.id});
+      this.progressAddCellN++;
     }
+
+    this.enableProgressBarDet(this.progressAddCellN);
 
     let data = {
       patient: this.patient.id,
@@ -99,5 +111,12 @@ export class AddcellsComponent implements OnInit {
     }
 
     this.executeExtraction(data)
+  }
+
+  public enableProgressBarDet(totalOp:number){
+    this.loadingService.totalOp = totalOp+2;
+    this.loadingService.currentInd = 0;
+    this.loadingService.progress = -1;
+    this.loadingService.loading = true;
   }
 }

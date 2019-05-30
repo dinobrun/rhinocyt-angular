@@ -9,6 +9,9 @@ export class LoaderComponent implements OnInit {
 
  	@Input() showLoader: boolean;
  	@Input() loaderText;
+  @Input() progressIndex : number;
+  mode : string = "determinate";
+  
 
   constructor() { }
 

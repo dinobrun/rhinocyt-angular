@@ -35,6 +35,7 @@ export class ApiService {
    */
   private static readonly BASE_API_URL: string = 'https://dinobrun.pythonanywhere.com/api/';
 
+
   /**
    * The state of debug of the service.
    */

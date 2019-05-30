@@ -21,7 +21,7 @@
 			<div>
 				<button *ngIf="!submitted" mat-raised-button (click)="submitCells()" [disabled]="addcellsForm.invalid" color="primary">Send</button>
 			</div>
-			<app-loader [showLoader]='loadingService.loading'></app-loader>
+			<app-loader [showLoader]='loadingService.loading' [progressIndex]='loadingService.progress'></app-loader>
 		</form>
 	</div>
 </app-content>
