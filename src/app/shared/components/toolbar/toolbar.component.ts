@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
 import { Doctor } from '../../interfaces/api-models';
 import { AuthService } from '../../services/auth.service';
 
@@ -12,7 +12,11 @@ export class ToolbarComponent implements OnInit {
 
   public doctor: Doctor = {} as Doctor;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private location: Location) {  }
+
+  cancel() {
+    this.location.back(); // <-- go back to previous location on cancel
+  }
 
   ngOnInit() {
     if (this.authService.getDoctor() === undefined) {
