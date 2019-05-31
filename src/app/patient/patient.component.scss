@@ -1,4 +1,36 @@
-#patient-card, #patient-extractions{
+#patient-card{
 	padding: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+}/*
+#patient-extractions{
+	position: fixed;
+	bottom: 5px;
+	right: 15px;left: 315px;
+	height: auto;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+}*/
+
+#patient-extractions{
+	position: relative;
+	height: auto;
+	bottom: 5px;
+	padding-left: 10px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+}/*
+#patient-extractions{
+	position: fixed;
+	bottom: 0%;
+	left: 15;
+	right: 15;
+    width: 96.5%;
+}*/
+#matlistExtraction{
+	height: 200px;
+    flex-grow: 1;
+    overflow: auto;
 }
+
+

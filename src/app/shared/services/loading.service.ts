@@ -24,6 +24,6 @@ export class LoadingService {
       this.progress=0;
     }
     else	this.progress=((this.currentInd/this.totalOp)*100);
-    console.log("c:"+this.currentInd+" t:" + this.totalOp + "Percentuale: " + this.progress );
+    //console.log("c:"+this.currentInd+" t:" + this.totalOp + "Percentuale: " + this.progress );
   }
 }

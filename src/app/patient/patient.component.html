@@ -1,24 +1,41 @@
 <app-content [sidenav]="true" [sidenav-items]=sidenavItems contentPadding="none" [error]="error">
 <div id="patient-card" *ngIf="patient" class="mat-elevation-z2">
-	<h2> {{ patient.first_name }} {{ patient.last_name }} </h2>
-		<mat-list>
-			<mat-list-item *ngIf="patient.fiscal_code"><strong>Fiscal code</strong>: {{ patient.fiscal_code }}</mat-list-item>
-			<mat-list-item *ngIf="patient.birthdate"><strong>Birthdate</strong>: {{ patient.birthdate }}</mat-list-item>
-			<mat-list-item *ngIf="patient.birth_city"><strong>Birth city</strong>: {{ patient.birth_city }}</mat-list-item>
-			<mat-list-item *ngIf="patient.residence_hcity"><strong>Residence city</strong>: {{ patient.residence_city }}</mat-list-item>
-		</mat-list>
-		<a routerLink="addcells" routerLinkActive="active" mat-raised-button id="execute_extraction" >Execute an extraction</a>
+	<h2> {{ patient.first_name }} {{ patient.last_name }} 
+			<a style="float: right;" routerLink="addcells" routerLinkActive="active" mat-raised-button id="execute_extraction" >Execute an extraction</a>
+		 </h2>
+		
+			<div *ngIf="patient.fiscal_code && patient.birthdate">
+				<strong>Fiscal code</strong>: {{ patient.fiscal_code }}	<strong>  Birthdate</strong>: {{ patient.birthdate }}
+			</div>
+			
+			<div *ngIf="patient.birth_city"><strong>Birth city</strong>: {{ patient.birth_city }}</div>
+			<div *ngIf="patient.residence_city"><strong>Residence city</strong>: {{ patient.residence_city }}</div>
+
 </div>
 
-<div id="patient-extractions" *ngIf="extractions" class="mat-elevation-z2">
-	<b> Extractions </b>
+<div id="patient-extractions" *ngIf="extractions" class="mat-elevation-z2" >Extractions
+	
+	<mat-nav-list id="matlistExtraction">
+		<a mat-list-item *ngFor="let extraction of activePageDataChunk" routerLink="/dashboard/review/{{extraction.id}}">
+			<mat-icon mat-list-icon>blur_on</mat-icon>
+			Extraction of {{ extraction.extraction_date | date:'medium'}} executes on {{extraction.slides.length}} slides
+		</a>
+	</mat-nav-list>
 
+	<mat-paginator 
+		[length]="length" 
+		[pageSize]="pageSize" 
+		[pageSizeOptions]="pageSizeOptions" 
+		(page)="onPageChanged($event)">
+	</mat-paginator>
+	
+<!--
 	<mat-nav-list>
 		<a mat-list-item *ngFor="let extraction of extractions" routerLink="/dashboard/review/{{extraction.id}}">
 			<mat-icon mat-list-icon>blur_on</mat-icon>
 			Extraction of {{ extraction.extraction_date | date:'medium'}} executes on {{extraction.slides.length}} slides
 		</a>
 	</mat-nav-list>
-
+-->
 </div>
 </app-content>
