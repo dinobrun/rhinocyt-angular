@@ -12,7 +12,6 @@ export class LoaderComponent implements OnInit {
   @Input() progressIndex : number;
   mode : string = "determinate";
   
-
   constructor() { }
 
   ngOnInit() {

@@ -33,7 +33,7 @@ export class ApiService {
   /**
    * The base URL for the API.
    */
-  private static readonly BASE_API_URL: string = 'https://dinobrun.pythonanywhere.com/api/';
+  private static readonly BASE_API_URL: string = 'http://127.0.0.1:8000/api/';
 
 
   /**

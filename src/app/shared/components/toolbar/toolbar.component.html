@@ -1,7 +1,10 @@
 <mat-toolbar color="primary" class="mat-elevation-z2">
-  <a routerLink="/" class="logo">Rhinocyt<mat-icon>home</mat-icon></a>
-  <button mat-button (click)="cancel()"><mat-icon>arrow_back</mat-icon></button>
+  <a  class="logo">Rhinocyt</a>
+  <button mat-button ><mat-icon  matTooltip="Back to dashboard!"  routerLink="/" >home</mat-icon></button>
+  
+  <button  mat-button (click)="cancel()"><mat-icon  matTooltip="Return to previusly page" >arrow_back</mat-icon></button>
   <span class="fill-space"></span>
+
 
   <!-- if logged show doctor -->
   <ng-container *ngIf="authService.isLogged && doctor.username">

@@ -6,6 +6,7 @@ import { Patient, Anamnesis, Allergy, ModelList} from '../shared/interfaces/api-
 import { ApiService } from '../shared/services/api.service';
 import { SidenavItem } from '../shared/classes/sidenav-item';
 
+
 export class Choice {
   key: string;
   value: string;
@@ -95,6 +96,20 @@ export class AddAnamnesisComponent implements OnInit {
 
   public error: boolean = false;
   public prickTest: boolean = false;
+  public precisionInput:number = 0.01;
+
+
+  public sidenavItems: SidenavItem [] = [
+    SidenavItem.internalLink("Dashboard", "/dashboard", {icon: 'dashboard'}),
+    SidenavItem.separator(),
+    SidenavItem.internalLink("Add Cells", "../addcells", {icon: 'add_box'}),
+    SidenavItem.selectedLable("Anamnesis", "../anamnesis", {icon: 'description'}),
+    SidenavItem.internalLink("Diagnosis", "../diagnosis", {icon: 'assignment'}),
+    SidenavItem.separator(),
+    SidenavItem.internalLink("Report PDF", "../report-pdf", {icon: 'assessment'}),
+    SidenavItem.internalLink("Patient Register", "", {icon: 'assignment_ind', disabled: true}),
+    SidenavItem.internalLink("Import/Export", "", {icon: 'import_export', disabled: true}),
+  ];
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) { }
 

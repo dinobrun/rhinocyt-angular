@@ -42,7 +42,7 @@ export class AddcellsComponent implements OnInit {
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router,
               private loadingService: LoadingService) {
-                this.loadingService.currentInd = 0;
+                this.loadingService.currentInd = 0; 
                 this.loadingService.progress = 0;  }
 
   ngOnInit() {
@@ -54,8 +54,8 @@ export class AddcellsComponent implements OnInit {
           this.error = true;
         }
       });
-      this.loadingService.currentInd = 0;
-      this.loadingService.progress = 0;
+      this.loadingService.currentInd = 0; 
+      this.loadingService.progress = 0; 
   }
 
   /**
@@ -95,7 +95,7 @@ export class AddcellsComponent implements OnInit {
     let dataSlides = [];
     for(let file of files) {
       dataSlides.push({image: file, patient: this.patient.id});
-      this.progressAddCellN++;
+      this.progressAddCellN++;      
     }
 
     this.enableProgressBarDet(this.progressAddCellN);
@@ -114,9 +114,9 @@ export class AddcellsComponent implements OnInit {
   }
 
   public enableProgressBarDet(totalOp:number){
-    this.loadingService.totalOp = totalOp+2;
-    this.loadingService.currentInd = 0;
-    this.loadingService.progress = -1;
+    this.loadingService.totalOp = totalOp+2;  
+    this.loadingService.currentInd = 0; 
+    this.loadingService.progress = -1; 
     this.loadingService.loading = true;
   }
 }

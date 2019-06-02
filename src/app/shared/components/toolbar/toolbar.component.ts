@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Doctor } from '../../interfaces/api-models';
 import { AuthService } from '../../services/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-toolbar',

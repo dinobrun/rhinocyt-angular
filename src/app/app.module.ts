@@ -35,6 +35,8 @@ import { DiagnosisComponent } from './diagnosis/diagnosis.component';
 import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 import {MatProgressBarModule} from '@angular/material'
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTreeModule,
     MatDialogModule,
     MatProgressBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTooltipModule
   ],
   providers: [
     CookieService,
