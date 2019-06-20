@@ -9,6 +9,7 @@
   <mat-horizontal-stepper>
 <!-- Anamnesi familiare -->
 <mat-step label="Anamnesi familiare">
+
 <div style=" width: 45%; float:left; padding: 2%;">
 
       <mat-form-field appearance="outline">
@@ -31,32 +32,40 @@
           </mat-select>
       </mat-form-field>
 
-  </div>
-  <div style=" width: 45%; float:left; padding: 2%;">
-      <div>
-      <mat-checkbox [(ngModel)]="anamnesis.polip_nas_gen" labelPosition="after" name="polip-nas-gen" color="primary">
-      <p>Uno dei genitori presenta poliposi nasale?</p>
-      </mat-checkbox>
-      </div>
+</div>
 
-      <div>
-      <mat-checkbox [(ngModel)]="anamnesis.polip_nas_fra" labelPosition="after" name="polip-nas-fra" color="primary">
-      <p>Uno dei fratelli presenta poliposi nasale?</p>
-      </mat-checkbox>
-      </div>
-
-      <div>
-      <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_gen" labelPosition="after" name="asma-bronch-gen" color="primary">
-      <p>Uno dei genitori presenta asma bronchiale?</p>
-      </mat-checkbox>
-      </div>
-
-      <div>
-      <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_fra" labelPosition="after" name="asma-bronch-fra" color="primary">
-      <p>Uno dei fratelli presenta asma bronchiale?</p>
-      </mat-checkbox>
-      </div>
+<div style=" width: 45%; float:left; padding: 2%;">
+    <div>
+    <mat-checkbox [(ngModel)]="anamnesis.polip_nas_gen" labelPosition="after" name="polip-nas-gen" color="primary">
+    <p>Uno dei genitori presenta poliposi nasale?</p>
+    </mat-checkbox>
     </div>
+
+    <div>
+    <mat-checkbox [(ngModel)]="anamnesis.polip_nas_fra" labelPosition="after" name="polip-nas-fra" color="primary">
+    <p>Uno dei fratelli presenta poliposi nasale?</p>
+    </mat-checkbox>
+    </div>
+
+    <div>
+    <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_gen" labelPosition="after" name="asma-bronch-gen" color="primary">
+    <p>Uno dei genitori presenta asma bronchiale?</p>
+    </mat-checkbox>
+    </div>
+
+    <div>
+    <mat-checkbox [(ngModel)]="anamnesis.asma_bronch_fra" labelPosition="after" name="asma-bronch-fra" color="primary">
+    <p>Uno dei fratelli presenta asma bronchiale?</p>
+    </mat-checkbox>
+    </div>
+</div>
+
+<div>
+  <mat-form-field style="width: 90%; height: 150px;" appearance="outline">
+      <textarea name="appuntiAnamFam" matInput placeholder="Family medical history notes" [(ngModel)]="anamnesis.appunti_anam_fam" style=" height: 100px;"></textarea>
+  </mat-form-field>
+</div>
+
 </mat-step>
 
 
@@ -160,6 +169,15 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+
+        
+            <div>
+                  <mat-form-field style="width: 100%; height: 90px;" appearance="outline">
+                    <textarea name="appuntimedico" matInput placeholder="Doctor's notes" [(ngModel)]="anamnesis.appunti_sintom" style=" height: 100px;"></textarea>
+                </mat-form-field>
+            </div>
+
+
       
     </div>
 </div>
@@ -167,7 +185,7 @@
   <mat-card style="width: auto">
   <div class="container"  style="width: 900px;">
       <div class="row">
-          <div class="col-sm-3">
+          <div class="col-sm-4">
               <mat-checkbox [(ngModel)]="anamnesis.lacrimazione" labelPosition="after" name="lacrimazione" color="primary">
                   Lacrimazione
                   </mat-checkbox><br>
@@ -178,7 +196,7 @@
                   Prurito congiuntiva
               </mat-checkbox><br>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
               <mat-checkbox [(ngModel)]="anamnesis.bruciore_cong" labelPosition="after" name="bruciore-cong" color="primary">
                   Bruciore congiuntiva
                   </mat-checkbox><br>
@@ -186,7 +204,7 @@
                   Prurito nasale
               </mat-checkbox><br>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-4">
               <mat-checkbox [(ngModel)]="anamnesis.uso_farmaci" labelPosition="after" name="uso-farmaci" color="primary">
                   Uso di farmaci
                   </mat-checkbox><br>
@@ -194,7 +212,12 @@
                   Febbre
               </mat-checkbox>
           </div>
+          
       </div>
+
+
+
+
   </div></mat-card>
   <div>
     
@@ -314,7 +337,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field style="width: 100%;" appearance="outline">
-              <textarea matInput placeholder="Appunti su alterzioni"></textarea>
+              <textarea  name="esamAlt" [(ngModel)]="anamnesis.appunti_alter_rinofaringe" matInput placeholder="Appunti su alterzioni"></textarea>
           </mat-form-field>
 
 
@@ -327,7 +350,7 @@
            </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-form-field style="width: 100%;" appearance="outline">
-              <textarea matInput placeholder="Appunti sull'esame delle orecchie"></textarea>
+              <textarea name="esamOrec" [(ngModel)]="anamnesis.esame_orecchie" matInput placeholder="Appunti sull'esame delle orecchie"></textarea>
           </mat-form-field>
         </mat-expansion-panel>
 
@@ -367,7 +390,7 @@
         </table>
         <hr>
         <mat-form-field style="width: 100%; height: 150px;" appearance="outline">
-            <textarea matInput placeholder="Conclusioni" style=" height: 100px;"></textarea>
+            <textarea name="conclus" matInput placeholder="Conclusioni" [(ngModel)]="anamnesis.conclusioni_esame" style=" height: 100px;"></textarea>
         </mat-form-field>
       </mat-card>
       </div>
@@ -470,7 +493,9 @@
     </div>
     </mat-step>
   </mat-horizontal-stepper>
+
   <button mat-raised-button id="submit-newanamnesis" style="position: fixed; bottom: 5%; right: 5%; color: blue; " type="submit">Create</button>
   </form>
+
 </div>
 </app-content>

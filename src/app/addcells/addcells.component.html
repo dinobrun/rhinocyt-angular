@@ -1,5 +1,5 @@
 <app-content [sidenav]="true" [sidenav-items]=sidenavItems [error]="error">
-	<div *ngIf="patient">
+	<div *ngIf="patient && patient.first_name!='Demo' && patient.last_name!='Paziente' " >
 		<form #addcellsForm="ngForm">
 			<h1>Add slides of {{ patient.first_name }} {{ patient.last_name }}</h1>
 			<div *ngIf="!submitted">
@@ -7,8 +7,8 @@
 				<input #file [(ngModel)]="fileModel" type="file" id="addcell" name="addcell" accept="image/*"
 	            multiple="true" required="true" (change)="onChange(file.files)"/>
 				<br>
-	      <li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
-	    </div>
+	      		<li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
+	    	</div>
 			<div *ngIf="submitted">
 				<h2>Caro utente,</h2>
 				<p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
@@ -24,4 +24,39 @@
 			<app-loader [showLoader]='loadingService.loading' [progressIndex]='loadingService.progress'></app-loader>
 		</form>
 	</div>
+
+	<div *ngIf="patient && patient.first_name==='Demo' && patient.last_name==='Paziente' " >
+
+			<output id="list"></output>
+			<form  #addcellsForm="ngForm">
+				<h1>Add slides of {{ patient.first_name }} {{ patient.last_name }}</h1>
+				<div *ngIf="!submitted">
+					<label>Try a predef set of cells</label>
+					<br>
+					<div *ngFor="let list of product; let i = index;">
+						<img #file [className]="imagesSelection[i] ? 'selectedImg' : 'imageToSeletContainer'" 
+								type="image" [src]='list.url' style="width:200px; margin: 15px; float: left; " 
+								(click)="selDeselImg(i)" id="{{i}}" name="{{i}}"  
+						/>
+					</div>
+					<br>
+					<li *ngFor="let file of fileListImg">{{ file.name }} {{ file.size }} byte</li>
+				</div>
+				<div *ngIf="submitted">
+					<h2>Caro utente,</h2>
+					<p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
+					su un server gratuito,
+					pertanto potrebbe apparire un pò lento.
+					Per questa sperimentazione preliminare non possiamo fare di più.
+					Per 50 campi normalmente impiega <b>6-8 minuti</b>, il tempo di un caffè.</p>
+					<h3>Grazie per la comprensione.</h3>
+				</div>
+				<br>
+
+					<button *ngIf="!submitted" (click)="tryCell()" mat-raised-button color="primary">Send</button>
+
+				<app-loader [showLoader]='loadingService.loading' [progressIndex]='loadingService.progress'></app-loader>
+			</form>
+		</div>
+
 </app-content>

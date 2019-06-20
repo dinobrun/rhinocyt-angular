@@ -40,6 +40,34 @@ export class LoginComponent implements OnInit {
         );
   }
 
+  public loginDemo() {
+    this.loginError = false;
+
+    this.apiService.Doctor()
+        .login("demo", "demo")
+        .subscribe(
+          () => this.router.navigate(['/']),
+          (error) => {
+            this.loginError = true;
+            class Doctor {
+              username: string ="demo";
+              email: string = "demo@gmail.com";
+              first_name: string = "demo";
+              last_name: string = "demo";
+            }
+        
+            let doc = new Doctor();
+        
+            this.apiService.Doctor()
+            .signup(this.doctor)
+            .subscribe();
+          }
+        );
+  }
+
+
+
+
 }
 
 /**

@@ -12,6 +12,14 @@
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
     <p>No account? Then you should <a routerLink="/signup">signup</a>.</p>
+    <p>
+     <!-- For explanations on the use<a routerLink="/demo">Intro Tour</a> -->
+    </p>
+  </form>
+ 
+      
+  <form (ngSubmit)="loginDemo()" #loginForm="ngForm" class="basic-form"> 
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Or try the system as a Guest</button>
   </form>
 
 </app-content>

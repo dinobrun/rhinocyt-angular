@@ -133,6 +133,11 @@ export interface Anamnesis extends ApiModel {
   ipertr_adenoidea?: number;
   patient?: number;
   anamnesis_date?: string;
+  conclusioni_esame?: string;
+  appunti_alter_rinofaringe?: string;
+  appunti_sintom?: string;
+  appunti_anam_fam?: string;
+  esame_orecchie?: string;
 }
 
 /**

@@ -36,6 +36,7 @@ import { ReportPdfComponent } from './report-pdf/report-pdf.component';
 import {MatProgressBarModule} from '@angular/material'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { DemoComponent } from './demo/demo.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AnamnesisComponent,
     DiagnosisComponent,
     ReportPdfComponent,
+    DemoComponent,
   ],
   imports: [
     BrowserModule,

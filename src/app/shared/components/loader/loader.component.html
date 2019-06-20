@@ -1,23 +1,13 @@
-<div *ngIf="showLoader" 
+<div *ngIf="showLoader " 
 	style="float: right; font-size: 120; color: blue">
 	Siamo al {{progressIndex.toFixed(2)}} attendere
 </div>
 <hr >
-<div *ngIf="showLoader" id="spinner-wrapper"><!--
-	<div>
-		<mat-progress-spinner 
-		[diameter]="400"
-		[value]="progressIndex">
-		</mat-progress-spinner>
-		<div style="font-size: 200; position: relative; top: -60; left: 30;">Testotantotesto</div>
-	</div>
--->
-
+<div *ngIf="showLoader" id="spinner-wrapper">
 	<mat-progress-bar 
 	class="example-margin"
 	[mode]="mode"
 	[value]="progressIndex"
 	[bufferValue]="90">
-</mat-progress-bar>
-
+	</mat-progress-bar>
 </div>

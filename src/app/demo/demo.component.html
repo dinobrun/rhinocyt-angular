@@ -1,0 +1,97 @@
+<app-content sidenav="true" [sidenav-items]=sidenavItems contentPadding="none">
+    <head>
+        <meta charset="utf-8">
+        <!-- styles -->
+        <link href="/src/app/demo/bootstrap.min.css" rel="stylesheet" type="text/html">
+        <link href="/src/app/demo/demo.css" rel="stylesheet" type="text/html">
+    
+        <!-- Add IntroJs styles -->
+        <link href="/src/app/demo/introjs.css" rel="stylesheet" type="text/html">
+        <link href="/src/app/demo/bootstrap-responsive.min.css" rel="stylesheet" type="text/html">
+      </head>
+<!--Dashborad-->
+<h1 data-step="1" data-intro="This is a tooltip!" data-position='right'>Basic Usage</h1>
+  <mat-list  *ngIf="!isSelectedPatient" class="list list-large-content patient-list">
+    <mat-list-item class="list-title">
+      <h2 id="#step1">Patients</h2>
+      <span class="fill-space"></span>
+      <a id="#step2" [routerLink]="'patient/new'" mat-raised-button color="primary"><mat-icon>add</mat-icon> New Patient</a>
+    </mat-list-item>
+
+    <mat-list-item class="filter-patients" (click)="filterPatients.focus()">
+      <mat-form-field floatLabel="never" class="fill-space">
+        <button matPrefix mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+        <input matInput type="text" #filterPatients placeholder="Search a patient" [(ngModel)]="patientFilter.fiscal_code">
+        <button matSuffix mat-icon-button (click)="clearPatientFilter(filterPatients)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-list-item>
+
+    <mat-nav-list>
+      <a mat-list-item (click)="selectPatient()" *ngFor="let patient of patients | filterBy:patientFilter" >
+        <!--<span class="initials" color="primary">{{ patient.initials }}</span>-->
+        <mat-icon mat-list-icon>person</mat-icon>
+        <h2 mat-line>{{patient.first_name}} {{patient.last_name}}</h2>
+        <h5 mat-line> Fiscal code: {{patient.fiscal_code}}</h5>
+      </a>
+    </mat-nav-list>
+
+  </mat-list>
+
+<!--AddCells-->
+  <div *ngIf="isSelectedPatient">
+      
+          <form #addcellsForm="ngForm">
+            <h1>Add slides of {{ patient.first_name }} {{ patient.last_name }}</h1>
+            <div *ngIf="!submitted">
+              <label>Select a set of slide </label>
+              <input #file [(ngModel)]="fileModel" type="file" id="addcell" name="addcell" accept="image/*"
+                    multiple="true" required="true" (change)="onChange(file.files)"/>
+              <br>
+              <li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
+            </div>
+            <div *ngIf="submitted">
+              <h2>Caro utente,</h2>
+              <p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
+              su un server gratuito,
+              pertanto potrebbe apparire un pò lento.
+              Per questa sperimentazione preliminare non possiamo fare di più.
+              Per 50 campi normalmente impiega <b>6-8 minuti</b>, il tempo di un caffè.</p>
+              <h3>Grazie per la comprensione.</h3>
+            </div>
+            <div>
+              <button *ngIf="!submitted" mat-raised-button (click)="submitCells()" [disabled]="addcellsForm.invalid" color="primary">Send</button>
+            </div>
+            <app-loader [showLoader]='loadingService.loading' [progressIndex]='loadingService.progress'></app-loader>
+          </form>
+
+          <script type="text/javascript" src="/src/app/demo/intro.js"></script>
+          <script type="text/javascript" src="/src/app/demo/assets/firstDemo.js"></script>
+            <script type="text/javascript">
+              function startIntro(){
+                var intro = introJs();
+                  intro.setOptions({
+                    steps: [
+                        {
+                          element: '#step1',
+                          intro: "This is a <b>bold</b> tooltip."
+                        },
+                        {
+                          element: '#step2',
+                          intro: "Ok, <i>wasn't</i> that fun?",
+                          position: 'right'
+                        }
+                    ]
+                  });
+          
+                  intro.start();
+              }
+            </script>
+            
+          
+  </div>
+
+</app-content>

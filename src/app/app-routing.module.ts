@@ -17,6 +17,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { StartupComponent } from './startup/startup.component';
 import { AboutComponent } from './about/about.component';
 import { TitleService } from './shared/services/title.service';
+import { DemoComponent } from './demo/demo.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'logout',
     component: LogoutComponent,
     data: { title: 'Logout' }
+  },
+  {
+    path: 'demo',
+    component: DemoComponent,
+    data: { title: 'Demo' }
   },
   {
     path: 'dashboard',
