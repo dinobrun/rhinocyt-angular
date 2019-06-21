@@ -39,6 +39,11 @@ export class DashboardComponent implements OnInit {
   //this.fetchCellExtractions();
   }
 
+  ngAfterViewInit(){
+    document.getElementById("btnHome").style.visibility = "hidden";
+    document.getElementById("btnBack").style.visibility = "hidden";
+  }
+
   private fetchDoctor() {
     if (this.authService.getDoctor() === undefined) {
       this.authService.onFetchData()

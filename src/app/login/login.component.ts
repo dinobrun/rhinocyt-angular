@@ -10,6 +10,9 @@ import { Doctor } from '../shared/interfaces/api-models';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
+
+
 export class LoginComponent implements OnInit {
   /**
    * The login data of the doctor (username and password)
@@ -29,6 +32,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(){
+    document.getElementById("btnHome").style.visibility = "hidden";
+    document.getElementById("btnBack").style.visibility = "hidden";
+  }
   public login() {
     this.loginError = false;
 
@@ -49,18 +56,6 @@ export class LoginComponent implements OnInit {
           () => this.router.navigate(['/']),
           (error) => {
             this.loginError = true;
-            class Doctor {
-              username: string ="demo";
-              email: string = "demo@gmail.com";
-              first_name: string = "demo";
-              last_name: string = "demo";
-            }
-        
-            let doc = new Doctor();
-        
-            this.apiService.Doctor()
-            .signup(this.doctor)
-            .subscribe();
           }
         );
   }
