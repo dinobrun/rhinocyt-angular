@@ -10,13 +10,11 @@
 	      		<li *ngFor="let file of filesList">{{ file.name }} {{ file.size }} byte</li>
 	    	</div>
 			<div *ngIf="submitted">
-				<h2>Caro utente,</h2>
-				<p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
-				su un server gratuito,
-				pertanto potrebbe apparire un pò lento.
-				Per questa sperimentazione preliminare non possiamo fare di più.
-				Per 50 campi normalmente impiega <b>6-8 minuti</b>, il tempo di un caffè.</p>
-				<h3>Grazie per la comprensione.</h3>
+					<h2>Dear user,</h2>
+					<p>Consider that this system is very complex from the computational point of view and is 
+						currently installed on a free server, so it may appear a little slow. We cannot do 
+						more for this preliminary experimentation. For 50 fields it normally takes <b>6-8 minutes</b></p>
+					<h3>Thanks for understanding</h3>
 			</div>
 			<div>
 				<button *ngIf="!submitted" mat-raised-button (click)="submitCells()" [disabled]="addcellsForm.invalid" color="primary">Send</button>
@@ -44,12 +42,10 @@
 				</div>
 				<div *ngIf="submitted">
 					<h2>Caro utente,</h2>
-					<p>considera che questo sistema è molto complesso dal punto di vista computazionale ed è al momento installato
-					su un server gratuito,
-					pertanto potrebbe apparire un pò lento.
-					Per questa sperimentazione preliminare non possiamo fare di più.
-					Per 50 campi normalmente impiega <b>6-8 minuti</b>, il tempo di un caffè.</p>
-					<h3>Grazie per la comprensione.</h3>
+					<p>Consider that this system is very complex from the computational point of view and is 
+						currently installed on a free server, so it may appear a little slow. We cannot do 
+						more for this preliminary experimentation. For 50 fields it normally takes <b>6-8 minutes</b></p>
+					<h3>Thanks for understanding</h3>
 				</div>
 				<br>
 
