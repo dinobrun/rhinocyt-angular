@@ -12,6 +12,13 @@ import {  NavigationExtras } from '@angular/router';
 import { LoadingService } from '../shared/services/loading.service';
 import { LoaderComponent } from '../shared/components/loader/loader.component';
 
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
 
 declare const myTest: any;
 @Component({
@@ -71,7 +78,6 @@ export class DemoComponent implements OnInit {
 
   
   ngOnInit() {
-    
 
     class Doctor  {
       username?: string;
@@ -128,7 +134,6 @@ export class DemoComponent implements OnInit {
     input.focus();
     this.patientFilter.fiscal_code = '';
   }
-
 
 
 
@@ -202,7 +207,9 @@ export class DemoComponent implements OnInit {
 
 
 
-
+  public nextStep(){
+    document.getElementById("overlay").style.visibility="hidden";
+  }
 
 
 
