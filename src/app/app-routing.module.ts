@@ -18,6 +18,7 @@ import { StartupComponent } from './startup/startup.component';
 import { AboutComponent } from './about/about.component';
 import { TitleService } from './shared/services/title.service';
 import { DemoComponent } from './demo/demo.component';
+import { ReviewAnamnesisComponent } from './review-anamnesis/review-anamnesis.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,11 @@ const routes: Routes = [
     path: 'dashboard/patient/:id/anamnesis',
     component: AnamnesisComponent,
     data: { title: 'Anamnesis' }
+  },
+  {
+    path: 'dashboard/patient/:id/anamnesis/:anamnesis_id',
+    component: ReviewAnamnesisComponent,
+    data: { title: 'ReviewAnamnesis' }
   },
   {
     path: 'dashboard/patient/:id/add-anamnesis',

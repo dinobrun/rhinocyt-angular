@@ -138,6 +138,7 @@ export interface Anamnesis extends ApiModel {
   appunti_sintom?: string;
   appunti_anam_fam?: string;
   esame_orecchie?: string;
+  prick_test?: PrickTest[];
 }
 
 /**

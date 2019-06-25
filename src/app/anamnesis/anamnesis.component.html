@@ -7,7 +7,7 @@
   <div id="patient-anamnesis" *ngIf="anamnesis_list" class="mat-elevation-z2">
     	<b> Anamnesis </b>
       <mat-nav-list>
-  	    <mat-list-item *ngFor="let anamnesis of anamnesis_list">
+  	    <mat-list-item *ngFor="let anamnesis of anamnesis_list" [routerLink]="[anamnesis.id]">
   	      <p>Anamnesis of {{ anamnesis.anamnesis_date | date:'medium'}}</p>
   	    </mat-list-item>
   	   </mat-nav-list>
