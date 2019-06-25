@@ -11,9 +11,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.2;
+    //opacity: 0.2;
     z-index: 2000;
-    background-color: black;
+    //background-color: black;
+    border-radius: 25px;
 }
 
+.mat-progress-bar {
+    height: 25px;
+    width: 90%;
+    border-radius: 9px;
+}
 
+.mat-progress-bar-primary mat-progress-bar-fill mat-progress-bar-element{
+    background-color: yellow !important;
+}

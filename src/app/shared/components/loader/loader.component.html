@@ -1,11 +1,11 @@
 <div *ngIf="showLoader " 
-	style="float: right; font-size: 120; color: blue">
-	Siamo al {{progressIndex.toFixed(2)}} attendere
+	style="float: right; padding-right: 40%; font-size: 54px; color: blue; opacity: 0.8;">
+	Progress {{progressIndex.toFixed(0)}} %
 </div>
 <hr >
 <div *ngIf="showLoader" id="spinner-wrapper">
 	<mat-progress-bar 
-	class="example-margin"
+	class="style1"
 	[mode]="mode"
 	[value]="progressIndex"
 	[bufferValue]="90">
