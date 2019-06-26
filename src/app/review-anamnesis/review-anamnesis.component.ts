@@ -177,7 +177,15 @@ export class ReviewAnamnesisComponent implements OnInit {
       allergyList: this.allergySelectedList
     }
 
+    //delete the actual anamnesis before update with the new one
+    this.apiService.Anamnesis().delete(this.anamnesis.id)
+    .subscribe(
+      (anamnesis: Anamnesis) => {
+        console.log("eliminato", anamnesis.id)
+      }
+    )
 
+    //create new anamnesis 
     this.apiService.Anamnesis().create(data)
     .subscribe(
       (anamnesis: Anamnesis) => {

@@ -667,7 +667,7 @@ class CityApiHelper extends ReadOnlyApiHelper<City> {
        //there are Allergies
        //remove the first element from array of slides
        const allergy = allergyList.shift();
-       //pipe the first slide creation to the request picking the id from cellExtraction
+       //pipe the first prickTest creation to the request picking the id from anamnesis
        request = request.pipe(mergeMap((anamnesis: Anamnesis, index) => {
          prickTest.anamnesis = anamnesis.id;
          prickTest.allergy = allergy.id;
